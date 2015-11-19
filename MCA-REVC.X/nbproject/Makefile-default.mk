@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=
+SOURCEFILES_QUOTED_IF_SPACED=main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=
-POSSIBLE_DEPFILES=
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d
 
 # Object Files
-OBJECTFILES=
+OBJECTFILES=${OBJECTDIR}/main.o
 
 # Source Files
-SOURCEFILES=
+SOURCEFILES=main.c
 
 
 CFLAGS=
@@ -82,7 +82,31 @@ MP_LD="C:\Program Files\PICC\CCSCON.exe"
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
+	${MKDIR} ${OBJECTDIR} 
+ifeq (1,1) 
+	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
+	${MP_CC}  out="${OBJECTDIR}"  main.c +FH +DF +CC  #__DEBUG=1 +ICD +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P #__18F4431=1 
+	@mv ${OBJECTDIR}/main.cof "dist/${CND_CONF}/${IMAGE_TYPE}/MCA-REVC.X.${IMAGE_TYPE}.cof" 
+	@mv ${OBJECTDIR}/main.hex "dist/${CND_CONF}/${IMAGE_TYPE}/MCA-REVC.X.${IMAGE_TYPE}.hex"
+else 
+	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FH +DF +CC  #__DEBUG=1 +ICD +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P #__18F4431=1 +EXPORTD="${OBJECTDIR}"  
+	
+endif 
+	
 else
+${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
+	${MKDIR} ${OBJECTDIR} 
+ifeq (1,1) 
+	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
+	${MP_CC}  out="${OBJECTDIR}"  main.c +FH +DF +CC +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P #__18F4431=1 
+	@mv ${OBJECTDIR}/main.cof "dist/${CND_CONF}/${IMAGE_TYPE}/MCA-REVC.X.${IMAGE_TYPE}.cof" 
+	@mv ${OBJECTDIR}/main.hex "dist/${CND_CONF}/${IMAGE_TYPE}/MCA-REVC.X.${IMAGE_TYPE}.hex"
+else 
+	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FH +DF +CC +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P #__18F4431=1 +EXPORTD="${OBJECTDIR}"  
+	
+endif 
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -90,20 +114,20 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/MCA-REVC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-ifeq (0,1) 
+ifeq (1,1) 
 	
 else 
-	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FH +DF +CC LINK=MCA-REVC.X.${IMAGE_TYPE}.hex= +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P
+	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FH +DF +CC LINK=MCA-REVC.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P
 	
 endif 
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/MCA-REVC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-ifeq (0,1) 
+ifeq (1,1) 
 	
 else 
-	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FH +DF +CC LINK=MCA-REVC.X.${IMAGE_TYPE}.hex= +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P
+	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FH +DF +CC LINK=MCA-REVC.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA +DF +LN +T +A +M +J +EA +Z -P
 	
 endif 
 	

@@ -1,0 +1,74 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+F6C.2   FLTA
+F6C.6   FLTB
+FAA     BAUDCTL
+FAA.3   BRG16
+FAB     RCSTA
+FAB.3   ADDEN
+FAB.6   RX9
+FAC     TXSTA
+FAC.2   BRGH
+FAC.4   SYNC
+FAF-FB0 SPBRG
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @cinit1
+000004  main
+000028  @cinit2
+
+Project Directory:
+    F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\
+
+Project Files:
+    main.c                                                  [19-Nov-15 23:26  CRC=B96F2DBD]
+    main.h                                                  [19-Nov-15 23:26  CRC=004C7DDD]
+    C:\Program Files\PICC\devices\18F4431.h                 [17-Apr-15 14:50  CRC=717083EF]
+
+Source signature=9C9CB378
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=187F
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4431
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+    Predefined symbols:
+       #define __18F4431 1
+
+Output Files:
+    XREF file:   build\default\production\main.xsym
+    Errors:      build\default\production\main.err
+    Ext Symbols: build\default\production\main.esym
+    INHX32:      build\default\production\main.hex
+    Symbols:     build\default\production\main.sym
+    List:        build\default\production\main.lst
+    Debug/COFF:  build\default\production\main.cof
+    Project:     main.ccspjt
+    Call Tree:   build\default\production\main.tre
+    Statistics:  build\default\production\main.STA

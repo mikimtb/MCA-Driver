@@ -1,0 +1,131 @@
+CCS PCH C Compiler, Version 5.045, 5967               19-Nov-15 23:26
+
+               Filename:   F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\build\default\production\main.lst
+
+               ROM used:   44 bytes (0%)
+                           Largest free fragment is 16340
+               RAM used:   4 (1%) at main() level
+                           4 (1%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+0000:  GOTO   0004
+.................... /*  
+....................  * File:   main.c 
+....................  * Author: Miroslav 
+....................  * 
+....................  * Created on November 19, 2015, 11:22 PM 
+....................  */ 
+....................  
+.................... #include "main.h" 
+.................... /*  
+....................  * File:   main.h 
+....................  * Author: Miroslav 
+....................  * 
+....................  * Created on November 19, 2015, 11:22 PM 
+....................  */ 
+....................  
+.................... #ifndef main_H 
+.................... #define main_H 
+....................  
+.................... #include <18F4431.h> 
+.................... //////////// Standard Header file for the PIC18F4431 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4431 
+....................  
+.................... #list 
+....................  
+....................  
+.................... #device     ADC = 10  
+.................... #fuses      H4 
+.................... #fuses      NOFCMEN 
+.................... #fuses      NOIESO 
+.................... #fuses      NOPUT 
+.................... #fuses      NOBROWNOUT 
+.................... #fuses      NOWDT 
+.................... #fuses      NOWINEN 
+.................... #fuses      NOPWMPIN 
+.................... #fuses      HPOL_HIGH 
+.................... #fuses      LPOL_HIGH 
+.................... #fuses      T1LOWPOWER 
+.................... #fuses      FLTAD4 
+.................... #fuses      SSP_RC 
+.................... #fuses      NOPWMPIN 
+.................... #fuses      MCLR 
+.................... #fuses      NOLVP 
+.................... #fuses      NODEBUG 
+....................  
+.................... #define     RX_PIN      PIN_C7 
+.................... #define     TX_PIN      PIN_C6 
+.................... #define     RS485_RW    PIN_C0 
+....................  
+.................... #use delay(clock = 40MHZ) 
+.................... #use rs232(xmit=TX_PIN, rcv=RX_PIN, enable=RS485_RW) 
+....................   
+.................... // UART Registers and bits 
+.................... #byte TXSTA=0xFAC 
+.................... #bit  BRGH=TXSTA.2 
+.................... #bit  SYNC=TXSTA.4 
+....................  
+.................... #byte RCSTA=0xFAB 
+.................... #bit  ADDEN=RCSTA.3 
+.................... #bit  RX9=RCSTA.6 
+....................  
+.................... #byte BAUDCTL=0xFAA 
+.................... #bit  BRG16=BAUDCTL.3 
+....................  
+.................... int16 SPBRG;  
+.................... #locate SPBRG=0xFAF 
+....................  
+....................  
+.................... #endif 
+....................  
+....................  
+....................  
+....................  
+.................... void main() 
+0004:  CLRF   FF8
+0006:  BCF    FD0.7
+0008:  BCF    F94.0
+000A:  BCF    F8B.0
+000C:  BSF    FAA.3
+000E:  MOVLW  11
+0010:  MOVWF  FAF
+0012:  MOVLW  04
+0014:  MOVWF  FB0
+0016:  MOVLW  A6
+0018:  MOVWF  FAC
+001A:  MOVLW  90
+001C:  MOVWF  FAB
+001E:  BCF    FB9.0
+0020:  BCF    FC1.6
+0022:  BCF    FC1.7
+0024:  MOVLW  00
+0026:  MOVWF  FB8
+.................... { 
+....................     while (1) 
+....................     { 
+0028:  BRA    0028
+....................          
+....................     } 
+.................... } 
+....................  
+002A:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 0600   H4 NOFCMEN NOIESO
+   Word  2: 3E0D   NOPUT NOBROWNOUT BORV20 NOWDT WDT32768 NOWINEN
+   Word  3: 9C3C   NOPWMPIN LPOL_HIGH HPOL_HIGH T1LOWPOWER FLTAD4 SSP_RC PWM4B5 EXCLKC3 MCLR
+   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
