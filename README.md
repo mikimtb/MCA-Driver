@@ -9,3 +9,4 @@ Characteristics:
     - DC motor current sensing
     - DC electromagnet break control
     - RS485 full and half duplex support for communication
+    - I2C or SPI interface for communication with slave driver
