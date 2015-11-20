@@ -1,13 +1,13 @@
 CCS PCH C Compiler, Version 5.045, 5967               20-Nov-15 01:01
 
-               Filename:   F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\build\default\production\main.lst
+               Filename:   F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\build\default\debug\main.lst
 
                ROM used:   642 bytes (4%)
-                           Largest free fragment is 15738
+                           Largest free fragment is 14906
                RAM used:   62 (8%) at main() level
                            68 (9%) worst case
                Stack used: 1 locations (0 in main + 1 for interrupts)
-               Stack size: 31
+               Stack size: 30
 
 *
 0000:  GOTO   01CA
@@ -493,13 +493,15 @@ CCS PCH C Compiler, Version 5.045, 5967               20-Nov-15 01:01
 ....................     } 
 .................... } 
 ....................  
-0284:  SLEEP 
+0284:  BRA    0284
 
 Configuration Fuses:
    Word  1: 0600   H4 NOFCMEN NOIESO
    Word  2: 3E0D   NOPUT NOBROWNOUT BORV20 NOWDT WDT32768 NOWINEN
    Word  3: 9C3C   NOPWMPIN LPOL_HIGH HPOL_HIGH T1LOWPOWER FLTAD4 SSP_RC PWM4B5 EXCLKC3 MCLR
-   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  4: 0001   STVREN NOLVP DEBUG
    Word  5: C00F   NOPROTECT NOCPB NOCPD
    Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
    Word  7: 400F   NOEBTR NOEBTRB
+
+   Some fuses have been forced to be compatible with the ICD debugger.

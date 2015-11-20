@@ -1,15 +1,15 @@
 
-ROM used:   642/16384 (4%)
-            642/16384 (4%) including unused fragments
+ROM used:   642/15552 (4%)
+            642/15552 (4%) including unused fragments
 
             0.6 Average locations per line
             22.1 Average locations per statement
 
-RAM used:   62/768 (8%) at main() level
-            68/768 (9%) worst case
+RAM used:   62/756 (8%) at main() level
+            68/756 (9%) worst case
 
 Stack used: 1 worst case (0 in main + 1 for interrupts)
-Stack size: 31
+Stack size: 30
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
@@ -51,7 +51,7 @@ Program metrics:
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-03FFE   472  15738  
+000AE-03CBE   472  14906  
 
 
 

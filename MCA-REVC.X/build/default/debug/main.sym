@@ -32,8 +32,8 @@
 03D     uart_init.baudrate
 03D     MAIN.@SCRATCH1
 03D     @PSTRINGC_670.@SCRATCH1
-03E     uart_init.dev_id
 03E     @delay_ms1.P1
+03E     uart_init.dev_id
 03E     uart_bgetc.@SCRATCH1
 03E     @PSTRINGC_670.@SCRATCH2
 03F     @PUTCHAR_BIU_1.P1
@@ -93,7 +93,7 @@ Project Files:
 Source signature=72016F81
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=33A2
+Hex file CRC=81EB
 
 Units:
     main (main)
@@ -105,18 +105,20 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
+    ICD Provisions: Yes
     Compile Mode:       CCS5
     Predefined symbols:
+       #define __DEBUG 1
        #define __18F4431 1
 
 Output Files:
-    XREF file:   build\default\production\main.xsym
-    Errors:      build\default\production\main.err
-    Ext Symbols: build\default\production\main.esym
-    INHX32:      build\default\production\main.hex
-    Symbols:     build\default\production\main.sym
-    List:        build\default\production\main.lst
-    Debug/COFF:  build\default\production\main.cof
+    XREF file:   build\default\debug\main.xsym
+    Errors:      build\default\debug\main.err
+    Ext Symbols: build\default\debug\main.esym
+    INHX32:      build\default\debug\main.hex
+    Symbols:     build\default\debug\main.sym
+    List:        build\default\debug\main.lst
+    Debug/COFF:  build\default\debug\main.cof
     Project:     main.ccspjt
-    Call Tree:   build\default\production\main.tre
-    Statistics:  build\default\production\main.STA
+    Call Tree:   build\default\debug\main.tre
+    Statistics:  build\default\debug\main.STA
