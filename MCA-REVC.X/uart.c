@@ -8,7 +8,7 @@
 #include "uart.h"
 
 //Defines
-#define BUFFER_SIZE 32
+#define BUFFER_SIZE   32
 #define uart_bkbhit (in.next_in!=in.next_out)
 //Variables
 typedef struct buffer
@@ -19,9 +19,13 @@ typedef struct buffer
 } t_buffer;
 
 t_buffer in = {{0}, 0, 0};
-
+t_buffer out = {{0}, 0, 0};
+// Functions
+/**
+ * UART receive interrupt handler
+ */
 #int_rda
-void serial_isr()
+void serial_rcv_isr()
 {
     int t;
     
@@ -32,8 +36,22 @@ void serial_isr()
         in.next_in = t;                                // Buffer full
 }
 /**
- * uart_bgetc, Function return one byte from uart circular buffer
- * @return , first buffer that is written to the buffer
+ * UART transmit interrupt handler
+ */
+#int_tbe
+void serial_td_isr()
+{
+    if (out.next_in != out.next_out)
+    {
+        putc(out.uart_buffer[out.next_out]);
+        out.next_out = (out.next_out + 1) % BUFFER_SIZE;
+    }
+    else
+        disable_interrupts(int_tbe);
+}
+/**
+ * uart_bgetc, Function return one byte from uart input buffer
+ * @return , first buffer that is written to the uart input buffer.
  */
 BYTE uart_bgetc()
 {
@@ -45,6 +63,23 @@ BYTE uart_bgetc()
     c = in.uart_buffer[in.next_out];
     in.next_out = (in.next_out + 1) % BUFFER_SIZE;
     return (c);
+}
+/**
+ * bputc, Function add one byte to uart output buffer
+ * @param c, byte that will be added in uart output buffer.
+ */
+void uart_bputc(BYTE c)
+{
+    short restart;
+    int ni;
+    
+    restart = out.next_in == out.next_out;
+    out.uart_buffer[out.next_in] = c;
+    ni = (out.next_in + 1) % BUFFER_SIZE;
+    while(ni == out.next_out);
+    out.next_in = ni;
+    if (restart)
+        enable_interrupts(int_tbe);
 }
 /**
  * uart_init, Function configure uart peripheral

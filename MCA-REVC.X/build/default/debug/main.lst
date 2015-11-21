@@ -1,16 +1,16 @@
-CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
+CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 22:20
 
                Filename:   F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\build\default\debug\main.lst
 
-               ROM used:   552 bytes (4%)
-                           Largest free fragment is 14996
-               RAM used:   62 (8%) at main() level
-                           68 (9%) worst case
+               ROM used:   664 bytes (4%)
+                           Largest free fragment is 14884
+               RAM used:   96 (13%) at main() level
+                           105 (14%) worst case
                Stack used: 1 locations (0 in main + 1 for interrupts)
                Stack size: 30
 
 *
-0000:  GOTO   018C
+0000:  GOTO   01FC
 *
 0008:  MOVWF  04
 000A:  MOVFF  FD8,05
@@ -35,28 +35,32 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 0054:  BTFSS  F9D.5
 0056:  GOTO   0060
 005A:  BTFSC  F9E.5
-005C:  GOTO   00AE
-0060:  MOVFF  0E,00
-0064:  MOVFF  0F,01
-0068:  MOVFF  10,02
-006C:  MOVFF  11,03
-0070:  MOVFF  0C,FE9
-0074:  MOVFF  07,FEA
-0078:  BSF    07.7
-007A:  MOVFF  08,FE1
-007E:  MOVFF  09,FE2
-0082:  MOVFF  0A,FD9
-0086:  MOVFF  0B,FDA
-008A:  MOVFF  12,FF3
-008E:  MOVFF  13,FF4
-0092:  MOVFF  14,FFA
-0096:  MOVFF  15,FF5
-009A:  MOVFF  16,FF6
-009E:  MOVFF  17,FF7
-00A2:  MOVF   04,W
-00A4:  MOVFF  06,FE0
-00A8:  MOVFF  05,FD8
-00AC:  RETFIE 0
+005C:  GOTO   00BA
+0060:  BTFSS  F9D.4
+0062:  GOTO   006C
+0066:  BTFSC  F9E.4
+0068:  GOTO   010A
+006C:  MOVFF  0E,00
+0070:  MOVFF  0F,01
+0074:  MOVFF  10,02
+0078:  MOVFF  11,03
+007C:  MOVFF  0C,FE9
+0080:  MOVFF  07,FEA
+0084:  BSF    07.7
+0086:  MOVFF  08,FE1
+008A:  MOVFF  09,FE2
+008E:  MOVFF  0A,FD9
+0092:  MOVFF  0B,FDA
+0096:  MOVFF  12,FF3
+009A:  MOVFF  13,FF4
+009E:  MOVFF  14,FFA
+00A2:  MOVFF  15,FF5
+00A6:  MOVFF  16,FF6
+00AA:  MOVFF  17,FF7
+00AE:  MOVF   04,W
+00B0:  MOVFF  06,FE0
+00B4:  MOVFF  05,FD8
+00B8:  RETFIE 0
 .................... /*  
 ....................  * File:   main.c 
 ....................  * Author: Miroslav 
@@ -88,26 +92,26 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 .................... /////////////////////////////////////////////////////////////////////////// 
 .................... #device PIC18F4431 
 *
-00E0:  DATA 0D,0A
-00E2:  DATA 52,75
-00E4:  DATA 6E,6E
-00E6:  DATA 69,6E
-00E8:  DATA 67,2E
-00EA:  DATA 2E,2E
-00EC:  DATA 0D,0A
-00EE:  DATA 00,00
+0136:  DATA 0D,0A
+0138:  DATA 52,75
+013A:  DATA 6E,6E
+013C:  DATA 69,6E
+013E:  DATA 67,2E
+0140:  DATA 2E,2E
+0142:  DATA 0D,0A
+0144:  DATA 00,00
 *
-0148:  TBLRD*+
-014A:  MOVF   FF5,F
-014C:  BZ    0166
-014E:  MOVFF  FF6,3D
-0152:  MOVFF  FF7,3E
-0156:  MOVFF  FF5,3F
-015A:  RCALL  012C
-015C:  MOVFF  3D,FF6
-0160:  MOVFF  3E,FF7
-0164:  BRA    0148
-0166:  GOTO   0214 (RETURN)
+01B8:  TBLRD*+
+01BA:  MOVF   FF5,F
+01BC:  BZ    01D6
+01BE:  MOVFF  FF6,5F
+01C2:  MOVFF  FF7,60
+01C6:  MOVFF  FF5,61
+01CA:  RCALL  0182
+01CC:  MOVFF  5F,FF6
+01D0:  MOVFF  60,FF7
+01D4:  BRA    01B8
+01D6:  GOTO   0284 (RETURN)
 ....................  
 .................... #list 
 ....................  
@@ -138,19 +142,19 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 .................... #use delay(clock = 40MHZ) 
 .................... #use rs232(xmit=TX_PIN, rcv=RX_PIN, enable=RS485_RW) 
 *
-012C:  BCF    F94.0
-012E:  BSF    F8B.0
-0130:  BTFSS  F9E.4
-0132:  BRA    0130
-0134:  BCF    F94.0
-0136:  BSF    F8B.0
-0138:  MOVFF  3F,FAD
-013C:  NOP   
-013E:  BTFSS  FAC.1
-0140:  BRA    013E
-0142:  BCF    F94.0
-0144:  BCF    F8B.0
-0146:  RETURN 0
+00EC:  BCF    F94.0
+00EE:  BSF    F8B.0
+00F0:  BTFSS  F9E.4
+00F2:  BRA    00F0
+00F4:  BCF    F94.0
+00F6:  BSF    F8B.0
+00F8:  MOVFF  67,FAD
+00FC:  NOP   
+00FE:  BTFSS  FAC.1
+0100:  BRA    00FE
+0102:  BCF    F94.0
+0104:  BCF    F8B.0
+0106:  GOTO   0124 (RETURN)
 ....................   
 .................... // UART Registers and bits 
 .................... #byte TXSTA=0xFAC 
@@ -183,8 +187,10 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 .................... #ifndef UART_H 
 .................... #define	UART_H 
 ....................  
-.................... void serial_isr(void); 
+.................... void serial_rcv_isr(void); 
+.................... void serial_td_isr(void); 
 .................... BYTE uart_bgetc(void); 
+.................... void uart_bputc(BYTE); 
 .................... void uart_init(unsigned int, BYTE); 
 ....................  
 .................... #endif	/* UART_H */ 
@@ -209,8 +215,10 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 .................... #ifndef UART_H 
 .................... #define	UART_H 
 ....................  
-.................... void serial_isr(void); 
+.................... void serial_rcv_isr(void); 
+.................... void serial_td_isr(void); 
 .................... BYTE uart_bgetc(void); 
+.................... void uart_bputc(BYTE); 
 .................... void uart_init(unsigned int, BYTE); 
 ....................  
 .................... #endif	/* UART_H */ 
@@ -218,7 +226,7 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 ....................  
 ....................  
 .................... //Defines 
-.................... #define BUFFER_SIZE 32 
+.................... #define BUFFER_SIZE   32 
 .................... #define uart_bkbhit (in.next_in!=in.next_out) 
 .................... //Variables 
 .................... typedef struct buffer 
@@ -229,43 +237,82 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 .................... } t_buffer; 
 ....................  
 .................... t_buffer in = {{0}, 0, 0}; 
-....................  
+.................... t_buffer out = {{0}, 0, 0}; 
+.................... // Functions 
+.................... /** 
+....................  * UART receive interrupt handler 
+....................  */ 
 .................... #int_rda 
-.................... void serial_isr() 
+.................... void serial_rcv_isr() 
 .................... { 
 ....................     int t; 
 ....................      
 ....................     in.uart_buffer[in.next_in] = getc(); 
 *
-00AE:  CLRF   03
-00B0:  MOVF   39,W
-00B2:  ADDLW  19
-00B4:  MOVWF  FE9
-00B6:  MOVLW  00
-00B8:  ADDWFC 03,W
-00BA:  MOVWF  FEA
-00BC:  BTFSS  F9E.5
-00BE:  BRA    00BC
-00C0:  MOVFF  FAE,FEF
+00BA:  CLRF   03
+00BC:  MOVF   39,W
+00BE:  ADDLW  19
+00C0:  MOVWF  FE9
+00C2:  MOVLW  00
+00C4:  ADDWFC 03,W
+00C6:  MOVWF  FEA
+00C8:  BTFSS  F9E.5
+00CA:  BRA    00C8
+00CC:  MOVFF  FAE,FEF
 ....................     t = in.next_in; 
-00C4:  MOVFF  39,41
+00D0:  MOVFF  39,66
 ....................     in.next_in = (in.next_in + 1) % BUFFER_SIZE; 
-00C8:  MOVLW  01
-00CA:  ADDWF  39,W
-00CC:  ANDLW  1F
-00CE:  MOVWF  39
+00D4:  MOVLW  01
+00D6:  ADDWF  39,W
+00D8:  ANDLW  1F
+00DA:  MOVWF  39
 ....................     if (in.next_in == in.next_out) 
-00D0:  MOVF   3A,W
-00D2:  SUBWF  39,W
-00D4:  BNZ   00DA
+00DC:  MOVF   3A,W
+00DE:  SUBWF  39,W
+00E0:  BNZ   00E6
 ....................         in.next_in = t;                                // Buffer full 
-00D6:  MOVFF  41,39
-00DA:  BCF    F9E.5
-00DC:  GOTO   0060
+00E2:  MOVFF  66,39
 .................... } 
 .................... /** 
-....................  * uart_bgetc, Function return one byte from uart circular buffer 
-....................  * @return , first buffer that is written to the buffer 
+....................  * UART transmit interrupt handler 
+....................  */ 
+00E6:  BCF    F9E.5
+00E8:  GOTO   006C
+.................... #int_tbe 
+.................... void serial_td_isr() 
+.................... { 
+....................     if (out.next_in != out.next_out) 
+*
+010A:  MOVF   5C,W
+010C:  SUBWF  5B,W
+010E:  BZ    012E
+....................     { 
+....................         putc(out.uart_buffer[out.next_out]); 
+0110:  CLRF   03
+0112:  MOVF   5C,W
+0114:  ADDLW  3B
+0116:  MOVWF  FE9
+0118:  MOVLW  00
+011A:  ADDWFC 03,W
+011C:  MOVWF  FEA
+011E:  MOVFF  FEF,67
+0122:  BRA    00EC
+....................         out.next_out = (out.next_out + 1) % BUFFER_SIZE; 
+0124:  MOVLW  01
+0126:  ADDWF  5C,W
+0128:  ANDLW  1F
+012A:  MOVWF  5C
+....................     } 
+012C:  BRA    0130
+....................     else 
+....................         disable_interrupts(int_tbe); 
+012E:  BCF    F9D.4
+0130:  BCF    F9E.4
+0132:  GOTO   006C
+.................... } 
+.................... /** 
+....................  * uart_bgetc, Function return one byte from uart input buffer 
+....................  * @return , first buffer that is written to the uart input buffer. 
 ....................  */ 
 .................... BYTE uart_bgetc() 
 .................... { 
@@ -276,22 +323,65 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 ....................                                                     //machine is called 
 ....................     c = in.uart_buffer[in.next_out]; 
 *
-016A:  CLRF   03
-016C:  MOVF   3A,W
-016E:  ADDLW  19
-0170:  MOVWF  FE9
-0172:  MOVLW  00
-0174:  ADDWFC 03,W
-0176:  MOVWF  FEA
-0178:  MOVFF  FEF,3D
+01DA:  CLRF   03
+01DC:  MOVF   3A,W
+01DE:  ADDLW  19
+01E0:  MOVWF  FE9
+01E2:  MOVLW  00
+01E4:  ADDWFC 03,W
+01E6:  MOVWF  FEA
+01E8:  MOVFF  FEF,5F
 ....................     in.next_out = (in.next_out + 1) % BUFFER_SIZE; 
-017C:  MOVLW  01
-017E:  ADDWF  3A,W
-0180:  ANDLW  1F
-0182:  MOVWF  3A
+01EC:  MOVLW  01
+01EE:  ADDWF  3A,W
+01F0:  ANDLW  1F
+01F2:  MOVWF  3A
 ....................     return (c); 
-0184:  MOVFF  3D,01
-0188:  GOTO   021C (RETURN)
+01F4:  MOVFF  5F,01
+01F8:  GOTO   028C (RETURN)
+.................... } 
+.................... /** 
+....................  * bputc, Function add one byte to uart output buffer 
+....................  * @param c, byte that will be added in uart output buffer. 
+....................  */ 
+.................... void uart_bputc(BYTE c) 
+.................... { 
+....................     short restart; 
+....................     int ni; 
+....................      
+....................     restart = out.next_in == out.next_out; 
+*
+0182:  BCF    x62.0
+0184:  MOVF   5C,W
+0186:  SUBWF  5B,W
+0188:  BNZ   018C
+018A:  BSF    x62.0
+....................     out.uart_buffer[out.next_in] = c; 
+018C:  CLRF   03
+018E:  MOVF   5B,W
+0190:  ADDLW  3B
+0192:  MOVWF  FE9
+0194:  MOVLW  00
+0196:  ADDWFC 03,W
+0198:  MOVWF  FEA
+019A:  MOVFF  61,FEF
+....................     ni = (out.next_in + 1) % BUFFER_SIZE; 
+019E:  MOVLW  01
+01A0:  ADDWF  5B,W
+01A2:  ANDLW  1F
+01A4:  MOVWF  x63
+....................     while(ni == out.next_out); 
+01A6:  MOVF   5C,W
+01A8:  SUBWF  x63,W
+01AA:  BZ    01A6
+....................     out.next_in = ni; 
+01AC:  MOVFF  63,5B
+....................     if (restart) 
+01B0:  BTFSS  x62.0
+01B2:  BRA    01B6
+....................         enable_interrupts(int_tbe); 
+01B4:  BSF    F9D.4
+01B6:  RETURN 0
 .................... } 
 .................... /** 
 ....................  * uart_init, Function configure uart peripheral 
@@ -304,157 +394,157 @@ CCS PCH C Compiler, Version 5.045, 5967               21-Nov-15 21:46
 ....................      
 ....................     switch (baudrate) 
 *
-00F0:  MOVF   3D,W
-00F2:  XORLW  01
-00F4:  BZ    0100
-00F6:  XORLW  03
-00F8:  BZ    010A
-00FA:  XORLW  01
-00FC:  BZ    0112
-00FE:  BRA    0118
+0146:  MOVF   5F,W
+0148:  XORLW  01
+014A:  BZ    0156
+014C:  XORLW  03
+014E:  BZ    0160
+0150:  XORLW  01
+0152:  BZ    0168
+0154:  BRA    016E
 ....................     { 
 ....................         case 1: 
 ....................             //setup_uart(19200); 
 ....................             divisor = 520; 
-0100:  MOVLW  02
-0102:  MOVWF  40
-0104:  MOVLW  08
-0106:  MOVWF  3F
+0156:  MOVLW  02
+0158:  MOVWF  x62
+015A:  MOVLW  08
+015C:  MOVWF  x61
 ....................             break; 
-0108:  BRA    0118
+015E:  BRA    016E
 ....................         case 2: 
 ....................             //setup_uart(115200); 
 ....................             divisor = 85; 
-010A:  CLRF   40
-010C:  MOVLW  55
-010E:  MOVWF  3F
+0160:  CLRF   x62
+0162:  MOVLW  55
+0164:  MOVWF  x61
 ....................             break; 
-0110:  BRA    0118
+0166:  BRA    016E
 ....................         case 3: 
 ....................             //setup_uart(256000); 
 ....................             divisor = 38; 
-0112:  CLRF   40
-0114:  MOVLW  26
-0116:  MOVWF  3F
+0168:  CLRF   x62
+016A:  MOVLW  26
+016C:  MOVWF  x61
 ....................             break; 
 ....................     } 
 ....................      
 ....................     // Switch to 16bit mode 
 ....................     SYNC = 0; 
-0118:  BCF    FAC.4
+016E:  BCF    FAC.4
 ....................     BRGH = 1; 
-011A:  BSF    FAC.2
+0170:  BSF    FAC.2
 ....................     BRG16 = 1; 
-011C:  BSF    FAA.3
+0172:  BSF    FAA.3
 ....................     // Select 9-bit reception 
 ....................     //RX9 = 0; 
 ....................     // Disable uart address detecion on receive 
 ....................     //ADDEN = 0; 
 ....................     // Configure uart speed 
 ....................     SPBRG = divisor; 
-011E:  MOVFF  40,FB0
-0122:  MOVFF  3F,FAF
+0174:  MOVFF  62,FB0
+0178:  MOVFF  61,FAF
 ....................     //setup_uart(UART_ADDRESS); 
 ....................     enable_interrupts(INT_RDA); 
-0126:  BSF    F9D.5
-0128:  GOTO   0206 (RETURN)
+017C:  BSF    F9D.5
+017E:  GOTO   0276 (RETURN)
 .................... } 
 ....................  
 ....................  
 ....................  
 .................... void main() 
 *
-018C:  CLRF   FF8
-018E:  BCF    FD0.7
-0190:  BSF    07.7
-0192:  BCF    F94.0
-0194:  BCF    F8B.0
-0196:  BSF    FAA.3
-0198:  MOVLW  11
-019A:  MOVWF  FAF
-019C:  MOVLW  04
-019E:  MOVWF  FB0
-01A0:  MOVLW  A6
-01A2:  MOVWF  FAC
-01A4:  MOVLW  90
-01A6:  MOVWF  FAB
-01A8:  CLRF   3C
-01AA:  CLRF   3B
-01AC:  BCF    FB9.0
-01AE:  BCF    FC1.6
-01B0:  BCF    FC1.7
-01B2:  MOVLW  00
-01B4:  MOVWF  FB8
-01B6:  BRA    01BE
-01B8:  DATA 22,40
-01BA:  DATA 19,00
-01BC:  DATA 00,00
-01BE:  MOVLW  00
-01C0:  MOVWF  FF8
-01C2:  MOVLW  01
-01C4:  MOVWF  FF7
-01C6:  MOVLW  B8
-01C8:  MOVWF  FF6
-01CA:  TBLRD*+
-01CC:  MOVF   FF5,W
-01CE:  MOVWF  00
-01D0:  XORLW  00
-01D2:  BZ    01FA
-01D4:  TBLRD*+
-01D6:  MOVF   FF5,W
-01D8:  MOVWF  01
-01DA:  BTFSC  FE8.7
-01DC:  BRA    01E8
-01DE:  ANDLW  0F
-01E0:  MOVWF  FEA
-01E2:  TBLRD*+
-01E4:  MOVFF  FF5,FE9
-01E8:  BTFSC  01.6
-01EA:  TBLRD*+
-01EC:  BTFSS  01.6
-01EE:  TBLRD*+
-01F0:  MOVFF  FF5,FEE
-01F4:  DCFSNZ 00,F
-01F6:  BRA    01CA
-01F8:  BRA    01EC
-01FA:  CLRF   FF8
+01FC:  CLRF   FF8
+01FE:  BCF    FD0.7
+0200:  BSF    07.7
+0202:  BCF    F94.0
+0204:  BCF    F8B.0
+0206:  BSF    FAA.3
+0208:  MOVLW  11
+020A:  MOVWF  FAF
+020C:  MOVLW  04
+020E:  MOVWF  FB0
+0210:  MOVLW  A6
+0212:  MOVWF  FAC
+0214:  MOVLW  90
+0216:  MOVWF  FAB
+0218:  CLRF   5E
+021A:  CLRF   5D
+021C:  BCF    FB9.0
+021E:  BCF    FC1.6
+0220:  BCF    FC1.7
+0222:  MOVLW  00
+0224:  MOVWF  FB8
+0226:  BRA    022E
+0228:  DATA 44,40
+022A:  DATA 19,00
+022C:  DATA 00,00
+022E:  MOVLW  00
+0230:  MOVWF  FF8
+0232:  MOVLW  02
+0234:  MOVWF  FF7
+0236:  MOVLW  28
+0238:  MOVWF  FF6
+023A:  TBLRD*+
+023C:  MOVF   FF5,W
+023E:  MOVWF  00
+0240:  XORLW  00
+0242:  BZ    026A
+0244:  TBLRD*+
+0246:  MOVF   FF5,W
+0248:  MOVWF  01
+024A:  BTFSC  FE8.7
+024C:  BRA    0258
+024E:  ANDLW  0F
+0250:  MOVWF  FEA
+0252:  TBLRD*+
+0254:  MOVFF  FF5,FE9
+0258:  BTFSC  01.6
+025A:  TBLRD*+
+025C:  BTFSS  01.6
+025E:  TBLRD*+
+0260:  MOVFF  FF5,FEE
+0264:  DCFSNZ 00,F
+0266:  BRA    023A
+0268:  BRA    025C
+026A:  CLRF   FF8
 .................... { 
 ....................     uart_init(2, 120);  
-01FC:  MOVLW  02
-01FE:  MOVWF  3D
-0200:  MOVLW  78
-0202:  MOVWF  3E
-0204:  BRA    00F0
+026C:  MOVLW  02
+026E:  MOVWF  5F
+0270:  MOVLW  78
+0272:  MOVWF  x60
+0274:  BRA    0146
 ....................     enable_interrupts(GLOBAL); 
-0206:  MOVLW  C0
-0208:  IORWF  FF2,F
+0276:  MOVLW  C0
+0278:  IORWF  FF2,F
 ....................      
-....................     printf("\r\n\Running...\r\n"); 
-020A:  MOVLW  E0
-020C:  MOVWF  FF6
-020E:  MOVLW  00
-0210:  MOVWF  FF7
-0212:  BRA    0148
+....................     printf(uart_bputc, "\r\n\Running...\r\n"); 
+027A:  MOVLW  36
+027C:  MOVWF  FF6
+027E:  MOVLW  01
+0280:  MOVWF  FF7
+0282:  BRA    01B8
 ....................      
 ....................     while (1) 
 ....................     { 
 ....................         //delay_ms(5000); 
 ....................         //printf("\r\nBuffered data => \r\n"); 
 ....................         while (uart_bkbhit) 
-0214:  MOVF   3A,W
-0216:  SUBWF  39,W
-0218:  BZ    0228
-....................             putc(uart_bgetc()); 
-021A:  BRA    016A
-021C:  MOVFF  01,3D
-0220:  MOVFF  01,3F
-0224:  RCALL  012C
-0226:  BRA    0214
-0228:  BRA    0214
+0284:  MOVF   3A,W
+0286:  SUBWF  39,W
+0288:  BZ    0298
+....................             uart_bputc(uart_bgetc()); 
+028A:  BRA    01DA
+028C:  MOVFF  01,5F
+0290:  MOVFF  01,61
+0294:  RCALL  0182
+0296:  BRA    0284
+0298:  BRA    0284
 ....................     } 
 .................... } 
 ....................  
-022A:  BRA    022A
+029A:  BRA    029A
 
 Configuration Fuses:
    Word  1: 0600   H4 NOFCMEN NOIESO

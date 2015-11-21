@@ -15,14 +15,14 @@ void main()
     uart_init(2, 120); 
     enable_interrupts(GLOBAL);
     
-    printf("\r\n\Running...\r\n");
+    printf(uart_bputc, "\r\n\Running...\r\n");
     
     while (1)
     {
         //delay_ms(5000);
         //printf("\r\nBuffered data => \r\n");
         while (uart_bkbhit)
-            putc(uart_bgetc());
+            uart_bputc(uart_bgetc());
     }
 }
 

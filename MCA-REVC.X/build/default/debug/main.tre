@@ -2,8 +2,10 @@
    ÃÄMAIN  0/160  Ram=1
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄuart_init  0/60  Ram=4
-   ³  ÃÄ@PSTRINGC_670  0/34  Ram=2
-   ³  ³  ÀÄ@PUTCHAR_BIU_1  0/28  Ram=1
+   ³  ÃÄ@PSTRINGC_687  0/34  Ram=2
+   ³  ³  ÀÄuart_bputc  0/54  Ram=5
    ³  ÃÄuart_bgetc  0/34  Ram=2
-   ³  ÀÄ@PUTCHAR_BIU_1  0/28  Ram=1
-   ÀÄserial_isr  0/50  Ram=3
+   ³  ÀÄuart_bputc  0/54  Ram=5
+   ÃÄserial_rcv_isr  0/50  Ram=3
+   ÀÄserial_td_isr  0/44  Ram=1
+      ÀÄ@PUTCHAR_BIU_1  0/30  Ram=1
