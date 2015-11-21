@@ -1,9 +1,9 @@
 
-ROM used:   642/16384 (4%)
-            642/16384 (4%) including unused fragments
+ROM used:   638/16384 (4%)
+            638/16384 (4%) including unused fragments
 
             0.6 Average locations per line
-            22.1 Average locations per statement
+            22.0 Average locations per statement
 
 RAM used:   62/768 (8%) at main() level
             68/768 (9%) worst case
@@ -13,45 +13,45 @@ Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   28     9  31  main.c
+   29     9  31  main.c
    58     0   0  main.h
   894     0   0  C:\Program Files\PICC\devices\18F4431.h
    17     0   0  uart.h
-   82    20  69  uart.c
+   87    20  69  uart.c
 ----- -----
- 1079    29 Total
+ 1085    29 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
 0     42   3    1             @delay_ms1
 0     28   2    1             @PUTCHAR_BIU_1
-0     50   4    3    160  4.0  serial_isr
-0     34   3    2    104  3.3  uart_bgetc
+0     50   4    3    256  4.6  serial_isr
+0     34   3    2    149  3.9  uart_bgetc
 0     60   5    4    328  4.5  uart_init
-0    188  15    1    181  2.5  MAIN
-0     16   1    0             @const698
-0     32   2    2             @PSTRINGC_670
-0     22   2    0             @const703
+0    184  14    1    207  3.0  MAIN
+0     16   1    0             @const701
+0     32   3    2             @PSTRINGC_670
+0     22   2    0             @const706
  Inline         0             @cinit1
 
 Program metrics:
     Functions               4
     Statements              29
     Comments                244
-    Volume (V)              1093
-    Difficulty (D)          13.5
-    Effort to implement (E) 14719
-    Time to implement (T)   14 minutes
+    Volume (V)              1322
+    Difficulty (D)          15.1
+    Effort to implement (E) 20006
+    Time to implement (T)   19 minutes
     Est Delivered Bugs (B)  0
     Cyclomatic Complexity   4
-    Maintainability (MI)    87
+    Maintainability (MI)    86
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-03FFE   472  15738  
+000AE-03FFE   468  15742  
 
 
 

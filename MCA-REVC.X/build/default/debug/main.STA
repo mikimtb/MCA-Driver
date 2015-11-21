@@ -1,9 +1,9 @@
 
-ROM used:   642/15552 (4%)
-            642/15552 (4%) including unused fragments
+ROM used:   552/15552 (4%)
+            552/15552 (4%) including unused fragments
 
-            0.6 Average locations per line
-            22.1 Average locations per statement
+            0.5 Average locations per line
+            20.4 Average locations per statement
 
 RAM used:   62/756 (8%) at main() level
             68/756 (9%) worst case
@@ -13,45 +13,43 @@ Stack size: 30
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   28     9  31  main.c
+   29     7  26  main.c
    58     0   0  main.h
   894     0   0  C:\Program Files\PICC\devices\18F4431.h
    17     0   0  uart.h
-   82    20  69  uart.c
+   87    20  74  uart.c
 ----- -----
- 1079    29 Total
+ 1085    27 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
-0     42   3    1             @delay_ms1
-0     28   2    1             @PUTCHAR_BIU_1
-0     50   4    3    160  4.0  serial_isr
-0     34   3    2    104  3.3  uart_bgetc
+0     28   3    1             @PUTCHAR_BIU_1
+0     50   5    3    256  4.6  serial_isr
+0     34   3    2    149  3.9  uart_bgetc
 0     60   5    4    328  4.5  uart_init
-0    188  15    1    181  2.5  MAIN
-0     16   1    0             @const698
-0     32   2    2             @PSTRINGC_670
-0     22   2    0             @const703
+0    160  14    1    160  2.9  MAIN
+0     16   1    0             @const701
+0     34   3    2             @PSTRINGC_670
  Inline         0             @cinit1
 
 Program metrics:
     Functions               4
-    Statements              29
-    Comments                244
-    Volume (V)              1093
-    Difficulty (D)          13.5
-    Effort to implement (E) 14719
-    Time to implement (T)   14 minutes
+    Statements              27
+    Comments                246
+    Volume (V)              1254
+    Difficulty (D)          15.4
+    Effort to implement (E) 19260
+    Time to implement (T)   18 minutes
     Est Delivered Bugs (B)  0
     Cyclomatic Complexity   4
-    Maintainability (MI)    87
+    Maintainability (MI)    90
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-03CBE   472  14906  
+000AE-03CBE   382  14996  
 
 
 

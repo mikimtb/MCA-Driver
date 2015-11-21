@@ -24,15 +24,12 @@
 016     @INTERRUPT_AREA
 017     @INTERRUPT_AREA
 018     @INTERRUPT_AREA
-019-038 uart_buffer
-039     next_in
-03A     next_out
+019-03A in
 03B-03C @sprintf_string
-03D     uart_bgetc.c
 03D     uart_init.baudrate
+03D     uart_bgetc.c
 03D     MAIN.@SCRATCH1
 03D     @PSTRINGC_670.@SCRATCH1
-03E     @delay_ms1.P1
 03E     uart_init.dev_id
 03E     uart_bgetc.@SCRATCH1
 03E     @PSTRINGC_670.@SCRATCH2
@@ -55,45 +52,43 @@ FAF-FB0 SPBRG
 FBB     CCP_2_LOW
 FBB     CCP_2
 FBC     CCP_2_HIGH
-FBE     CCP_1
 FBE     CCP_1_LOW
+FBE     CCP_1
 FBF     CCP_1_HIGH
 FE1-FE2 @READ_PACKED_MEMORY.P1
 FE1-FE2 @WRITE_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PROGRAM_MEMORY.P1
-FE9-FEA @READ_PACKED_MEMORY.P2
-FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
 FE9-FEA @WRITE_PACKED_MEMORY.P4
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
 FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 0000AE  serial_isr
-0000E0  @const698.call
-0000F0  @const703.call
-000106  uart_init
-000142  @PUTCHAR_BIU_1
-00015E  @PSTRINGC_670
-00017E  @delay_ms1
-0001A8  uart_bgetc
-0001CA  @cinit1
-0001CA  MAIN
-0001F8  @cinit2
+0000E0  @const701.call
+0000F0  uart_init
+00012C  @PUTCHAR_BIU_1
+000148  @PSTRINGC_670
+00016A  uart_bgetc
+00018C  MAIN
+00018C  @cinit1
+0001B6  @cinit2
 
 Project Directory:
     F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\
 
 Project Files:
-    main.c                                                  [20-Nov-15 00:58  CRC=9E0625C0]
+    main.c                                                  [21-Nov-15 21:46  CRC=7FACAEE6]
     main.h                                                  [19-Nov-15 23:26  CRC=004C7DDD]
     C:\Program Files\PICC\devices\18F4431.h                 [17-Apr-15 14:50  CRC=717083EF]
-    uart.h                                                  [20-Nov-15 00:55  CRC=B96F2DBD]
-    uart.c                                                  [20-Nov-15 00:58  CRC=D4678D1C]
+    uart.h                                                  [21-Nov-15 21:28  CRC=B96F2DBD]
+    uart.c                                                  [21-Nov-15 21:37  CRC=8FBF3E9E]
 
-Source signature=72016F81
+Source signature=CA575BAB
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=81EB
+Hex file CRC=A169
 
 Units:
     main (main)

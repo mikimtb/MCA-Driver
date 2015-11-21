@@ -9,6 +9,7 @@
 #include "uart.h"
 #include "uart.c"
 
+
 void main()
 {
     uart_init(2, 120); 
@@ -18,8 +19,8 @@ void main()
     
     while (1)
     {
-        delay_ms(5000);
-        printf("\r\nBuffered data => \r\n");
+        //delay_ms(5000);
+        //printf("\r\nBuffered data => \r\n");
         while (uart_bkbhit)
             putc(uart_bgetc());
     }

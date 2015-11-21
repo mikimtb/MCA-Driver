@@ -9,22 +9,27 @@
 
 //Defines
 #define BUFFER_SIZE 32
-#define uart_bkbhit (next_in!=next_out)
+#define uart_bkbhit (in.next_in!=in.next_out)
 //Variables
-BYTE uart_buffer[BUFFER_SIZE] = {0};
-BYTE next_in = 0;
-BYTE next_out = 0;
+typedef struct buffer
+{
+    BYTE uart_buffer[BUFFER_SIZE];
+    BYTE next_in;
+    BYTE next_out;
+} t_buffer;
+
+t_buffer in = {{0}, 0, 0};
 
 #int_rda
 void serial_isr()
 {
     int t;
     
-    uart_buffer[next_in] = getc();
-    t = next_in;
-    next_in = (next_in + 1) % BUFFER_SIZE;
-    if (next_in == next_out)
-        next_in = t;                                // Buffer full
+    in.uart_buffer[in.next_in] = getc();
+    t = in.next_in;
+    in.next_in = (in.next_in + 1) % BUFFER_SIZE;
+    if (in.next_in == in.next_out)
+        in.next_in = t;                                // Buffer full
 }
 /**
  * uart_bgetc, Function return one byte from uart circular buffer
@@ -37,8 +42,8 @@ BYTE uart_bgetc()
     //while(!uart_bkbhit);                          // This should be checked
                                                     // in parser before state
                                                     //machine is called
-    c = uart_buffer[next_out];
-    next_out = (next_out + 1) % BUFFER_SIZE;
+    c = in.uart_buffer[in.next_out];
+    in.next_out = (in.next_out + 1) % BUFFER_SIZE;
     return (c);
 }
 /**

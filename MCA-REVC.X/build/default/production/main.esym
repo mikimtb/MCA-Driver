@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.045""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""20-Nov-15""
-D G "__TIME__" 0 0 ""01:01:18""
+D G "__DATE__" 0 0 ""21-Nov-15""
+D G "__TIME__" 0 0 ""21:41:08""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4431" 0 0 "1" "* File:   main.c"
 C G "" 0 1 1 "*"
@@ -1274,37 +1274,36 @@ C L "uart_init" 3 1 1 "*"
 C L "uart_init" 3 1 1 "*"
 C L "uart_init" 3 1 2 "*"
 D G "BUFFER_SIZE" 4 11 "32"
-D G "uart_bkbhit" 4 12 " (next_in!=next_out)"
+D G "uart_bkbhit" 4 12 " (in.next_in!=in.next_out)"
 C L "uart_init" 4 10 1 "FUNCTION"
-V G "uart_buffer" 4 14 "int8[32]" `689 
-V G "next_in" 4 15 "int8" `690 
-V G "next_out" 4 16 "int8" `691 
-F N "serial_isr" 4 19 ""
-F G "serial_isr" 4 20 "void()" `684 
-V L "t" 4 21 "int8" `692 
+T G "t_buffer" 4 19 "{int8[32] uart_buffer,int8 next_in,int8 next_out}" `693 
+V G "in" 4 21 "t_buffer" `694 
+F N "serial_isr" 4 24 ""
+F G "serial_isr" 4 25 "void()" `684 
+V L "t" 4 26 "int8" `695 
 C L "serial_isr" 4 10 1 "FUNCTION"
-C L "uart_bgetc" 4 29 1 "*"
-C L "uart_bgetc" 4 29 1 "*"
-F N "uart_bgetc" 4 33 ""
-F G "uart_bgetc" 4 34 "int8()" `685 
-V L "c" 4 35 "int8" `693  "while(!uart_bkbhit);                          // This should be checked"
-C L "uart_bgetc" 4 29 2 "FUNCTION"
-C L "uart_init" 4 44 1 "*"
-C L "uart_init" 4 44 1 "*"
-C L "uart_init" 4 44 1 "*"
-F N "uart_init" 4 49 ""
-V L "baudrate" 4 49 "int8" `687 
-V L "dev_id" 4 49 "int8" `696 
-F G "uart_init" 4 50 "void(int8 baudrate,int8 dev_id)" `686 
-V L "divisor" 4 51 "int16" `694 
-C L "uart_init" 4 44 1 "FUNCTION"
-C L "uart_init" 4 44 1 "FUNCTION"
-C L "uart_init" 4 44 1 "FUNCTION"
-C L "uart_init" 4 44 1 "FUNCTION"
-C L "uart_init" 4 44 5 "FUNCTION"
-C L "uart_init" 4 44 1 "FUNCTION"
-F N "MAIN" 0 12 ""
-F G "MAIN" 0 13 "void(int8 dev_id)" `695 
+C L "uart_bgetc" 4 34 1 "*"
+C L "uart_bgetc" 4 34 1 "*"
+F N "uart_bgetc" 4 38 ""
+F G "uart_bgetc" 4 39 "int8()" `685 
+V L "c" 4 40 "int8" `696  "while(!uart_bkbhit);                          // This should be checked"
+C L "uart_bgetc" 4 34 2 "FUNCTION"
+C L "uart_init" 4 49 1 "*"
+C L "uart_init" 4 49 1 "*"
+C L "uart_init" 4 49 1 "*"
+F N "uart_init" 4 54 ""
+V L "baudrate" 4 54 "int8" `687 
+V L "dev_id" 4 54 "int8" `699 
+F G "uart_init" 4 55 "void(int8 baudrate,int8 dev_id)" `686 
+V L "divisor" 4 56 "int16" `697 
+C L "uart_init" 4 49 1 "FUNCTION"
+C L "uart_init" 4 49 1 "FUNCTION"
+C L "uart_init" 4 49 1 "FUNCTION"
+C L "uart_init" 4 49 1 "FUNCTION"
+C L "uart_init" 4 49 5 "FUNCTION"
+C L "uart_init" 4 49 1 "FUNCTION"
+F N "MAIN" 0 13 ""
+F G "MAIN" 0 14 "void(int8 dev_id)" `698 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

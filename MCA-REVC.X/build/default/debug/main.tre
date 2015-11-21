@@ -1,12 +1,9 @@
 ÀÄMCA-REVC
-   ÃÄMAIN  0/188  Ram=1
+   ÃÄMAIN  0/160  Ram=1
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄuart_init  0/60  Ram=4
-   ³  ÃÄ@PSTRINGC_670  0/32  Ram=2
+   ³  ÃÄ@PSTRINGC_670  0/34  Ram=2
    ³  ³  ÀÄ@PUTCHAR_BIU_1  0/28  Ram=1
-   ³  ÃÄ@delay_ms1  0/42  Ram=1
-   ³  ÃÄ@PSTRINGC_670  0/32  Ram=2
-   ³  ³  ÀÄ*
    ³  ÃÄuart_bgetc  0/34  Ram=2
    ³  ÀÄ@PUTCHAR_BIU_1  0/28  Ram=1
    ÀÄserial_isr  0/50  Ram=3
