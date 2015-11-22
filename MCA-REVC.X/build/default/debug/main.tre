@@ -1,11 +1,28 @@
 ÀÄMCA-REVC
-   ÃÄMAIN  0/160  Ram=1
+   ÃÄMAIN  0/164  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄuart_init  0/60  Ram=4
-   ³  ÃÄ@PSTRINGC_687  0/34  Ram=2
-   ³  ³  ÀÄuart_bputc  0/54  Ram=5
-   ³  ÃÄuart_bgetc  0/34  Ram=2
-   ³  ÀÄuart_bputc  0/54  Ram=5
+   ³  ÃÄ@PSTRINGC_687  0/32  Ram=2
+   ³  ³  ÀÄuart_bputc  0/56  Ram=5
+   ³  ÀÄparse_uart_data  0/12  Ram=0
+   ³     ÃÄwait_for_start  0/38  Ram=1
+   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ÃÄwait_for_adr  0/28  Ram=0
+   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ÃÄparse_id  0/28  Ram=0
+   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ÃÄparse_length  0/28  Ram=0
+   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ÃÄparse_data  0/66  Ram=2
+   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ÃÄparse_crc  0/48  Ram=0
+   ³     ³  ÃÄuart_bgetc  0/32  Ram=2
+   ³     ³  ÀÄcrc_check  0/60  Ram=3
+   ³     ÀÄparse_end  0/54  Ram=1
+   ³        ÃÄuart_bgetc  0/32  Ram=2
+   ³        ÀÄ@PSTRINGC_687  0/32  Ram=2
+   ³           ÀÄ*
    ÃÄserial_rcv_isr  0/50  Ram=3
-   ÀÄserial_td_isr  0/44  Ram=1
-      ÀÄ@PUTCHAR_BIU_1  0/30  Ram=1
+   ÃÄserial_td_isr  0/44  Ram=1
+   ³  ÀÄ@PUTCHAR_BIU_1  0/30  Ram=1
+   ÀÄ@GOTOPTR  0/14  Ram=0

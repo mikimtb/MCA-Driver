@@ -22,7 +22,7 @@ void main()
         //delay_ms(5000);
         //printf("\r\nBuffered data => \r\n");
         while (uart_bkbhit)
-            uart_bputc(uart_bgetc());
+            parse_uart_data();
     }
 }
 

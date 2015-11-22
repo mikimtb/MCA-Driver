@@ -8,18 +8,37 @@
 #include "uart.h"
 
 //Defines
-#define BUFFER_SIZE   32
+#define UART_BUFFER_SIZE    64
+#define DATA_BUFFER_SIZE    32    
 #define uart_bkbhit (in.next_in!=in.next_out)
-//Variables
+
+// Type definitions
 typedef struct buffer
 {
-    BYTE uart_buffer[BUFFER_SIZE];
+    BYTE uart_buffer[UART_BUFFER_SIZE];
     BYTE next_in;
     BYTE next_out;
 } t_buffer;
 
+typedef struct package
+{
+    BYTE data_buffer[DATA_BUFFER_SIZE];
+    BYTE dev_address;
+    BYTE ID;
+    BYTE data_length;
+    BYTE crc;
+} t_package;
+
+typedef void (*t_fptr)(void);
+//Variables
+//UART
 t_buffer in = {{0}, 0, 0};
 t_buffer out = {{0}, 0, 0};
+//Message parser
+t_package data = {{0}, 0, 0, 0};
+
+//Pointer to a function that takes no parameters and returns nothing.
+t_fptr parse_next = wait_for_start;          //Initialize the pointer to point to first state
 // Functions
 /**
  * UART receive interrupt handler
@@ -31,7 +50,7 @@ void serial_rcv_isr()
     
     in.uart_buffer[in.next_in] = getc();
     t = in.next_in;
-    in.next_in = (in.next_in + 1) % BUFFER_SIZE;
+    in.next_in = (in.next_in + 1) % UART_BUFFER_SIZE;
     if (in.next_in == in.next_out)
         in.next_in = t;                                // Buffer full
 }
@@ -44,7 +63,7 @@ void serial_td_isr()
     if (out.next_in != out.next_out)
     {
         putc(out.uart_buffer[out.next_out]);
-        out.next_out = (out.next_out + 1) % BUFFER_SIZE;
+        out.next_out = (out.next_out + 1) % UART_BUFFER_SIZE;
     }
     else
         disable_interrupts(int_tbe);
@@ -61,7 +80,7 @@ BYTE uart_bgetc()
                                                     // in parser before state
                                                     //machine is called
     c = in.uart_buffer[in.next_out];
-    in.next_out = (in.next_out + 1) % BUFFER_SIZE;
+    in.next_out = (in.next_out + 1) % UART_BUFFER_SIZE;
     return (c);
 }
 /**
@@ -75,7 +94,7 @@ void uart_bputc(BYTE c)
     
     restart = out.next_in == out.next_out;
     out.uart_buffer[out.next_in] = c;
-    ni = (out.next_in + 1) % BUFFER_SIZE;
+    ni = (out.next_in + 1) % UART_BUFFER_SIZE;
     while(ni == out.next_out);
     out.next_in = ni;
     if (restart)
@@ -116,6 +135,120 @@ void uart_init(unsigned int baudrate, BYTE dev_id)
     //ADDEN = 0;
     // Configure uart speed
     SPBRG = divisor;
-    //setup_uart(UART_ADDRESS);
+    //fp_parser = wait_for_start;
     enable_interrupts(INT_RDA);
+}
+
+void parse_uart_data()
+{
+    (*parse_next)();
+}
+
+void wait_for_start()
+{
+    //* If there is no data available, return */
+    if (!uart_bkbhit)
+        return;
+    
+    /* If the data is start character, we update the state */
+    if (uart_bgetc() == '#')
+    {
+        /* Initialize data variables, just in case */
+        data.dev_address = 0;
+        data.ID = 0;
+        data.data_length = 0;
+        data.crc = 0;
+        parse_next = wait_for_adr; // Next we parse the [ID] field
+    }
+}
+
+void wait_for_adr()
+{
+    //* If there is no data available, return */
+    if (!uart_bkbhit)
+        return;
+    
+    data.dev_address = uart_bgetc();
+    parse_next = parse_id;
+}
+void parse_id()
+{
+    //* If there is no data available, return */
+    if (!uart_bkbhit)
+        return;
+    
+    data.ID = uart_bgetc();
+    parse_next = parse_length;
+}
+
+void parse_length()
+{
+    //* If there is no data available, return */
+    if (!uart_bkbhit)
+        return;
+    
+    data.data_length = uart_bgetc();
+    parse_next = parse_data;
+}
+
+int count = 0;
+void parse_data()
+{
+    //* If there is no data available, return */
+    if (!uart_bkbhit)
+        return;
+    /* Add received byte to the data_length variable.
+       The bytes arrive in Big Endian order. */
+    data.data_buffer[count] = uart_bgetc();
+    count++;
+    /* State transition rule */
+    if (count == data.data_length)
+    {
+        count = 0;  // Reset counter
+        parse_next = parse_crc;
+    }
+}
+
+void parse_crc()
+{
+    //* If there is no data available, return */
+    if (!uart_bkbhit)
+        return;
+    
+    data.crc = uart_bgetc();
+    // Check CRC
+    if (!crc_check())
+    {
+        parse_next = wait_for_start;
+        return;
+    }
+    parse_next = parse_end;
+}
+
+void parse_end()
+{
+    //* If there is no data available, return */
+    if (!uart_bkbhit)
+        return;
+    // If last byte isn't stop character, something goes wrong in transmission
+    // and package will be rejected
+    if (uart_bgetc() != '$')
+    {
+        parse_next = wait_for_start;
+        return;
+    }
+    parse_next = wait_for_start;
+    // Handle data
+    printf(uart_bputc, "Message receive done.");
+}
+
+short crc_check()
+{
+    int i;
+    int crc8 = 0;
+    crc8 = crc8 ^ data.dev_address ^ data.ID ^ data.data_length;
+    for(i=0; i<data.data_length; i++)
+        crc8 = crc8 ^ data.data_buffer[i];
+    
+    return crc8 == data.crc;
 }

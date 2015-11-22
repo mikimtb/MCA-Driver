@@ -24,27 +24,36 @@
 016     @INTERRUPT_AREA
 017     @INTERRUPT_AREA
 018     @INTERRUPT_AREA
-019-03A in
-03B-05C out
-05D-05E @sprintf_string
-05F     uart_bgetc.c
-05F     uart_init.baudrate
-05F     MAIN.@SCRATCH1
-05F     @PSTRINGC_687.@SCRATCH1
-060     uart_init.dev_id
-060     uart_bgetc.@SCRATCH1
-060     @PSTRINGC_687.@SCRATCH2
-061     uart_bputc.c
-061-062 uart_init.divisor
-062.0   uart_bputc.restart
-063     uart_bputc.ni
-064     uart_bputc.@SCRATCH1
-065     uart_bputc.@SCRATCH2
-066     serial_rcv_isr.t
-066     serial_td_isr.@SCRATCH1
-067     @PUTCHAR_BIU_1.P1
-067     serial_rcv_isr.@SCRATCH1
-068     serial_rcv_isr.@SCRATCH2
+019-05A in
+05B-09C out
+09D-0C0 data
+0C1-0C2 parse_next
+0C3     count
+0C4-0C5 @sprintf_string
+0C6     crc_check.i
+0C6     uart_init.baudrate
+0C6     wait_for_start.@SCRATCH1
+0C6     parse_data.@SCRATCH1
+0C6     parse_end.@SCRATCH1
+0C6     @PSTRINGC_687.@SCRATCH1
+0C7     crc_check.crc8
+0C7     uart_init.dev_id
+0C7     parse_data.@SCRATCH2
+0C7     @PSTRINGC_687.@SCRATCH2
+0C8     uart_bputc.c
+0C8     uart_bgetc.c
+0C8-0C9 uart_init.divisor
+0C8     crc_check.@SCRATCH1
+0C9.0   uart_bputc.restart
+0C9     uart_bgetc.@SCRATCH1
+0CA     uart_bputc.ni
+0CB     uart_bputc.@SCRATCH1
+0CC     uart_bputc.@SCRATCH2
+0CD     serial_rcv_isr.t
+0CD     serial_td_isr.@SCRATCH1
+0CE     @PUTCHAR_BIU_1.P1
+0CE     serial_rcv_isr.@SCRATCH1
+0CF     serial_rcv_isr.@SCRATCH2
 F6C.2   FLTA
 F6C.6   FLTB
 FAA     BAUDCTL
@@ -56,48 +65,59 @@ FAC     TXSTA
 FAC.2   BRGH
 FAC.4   SYNC
 FAF-FB0 SPBRG
-FBB     CCP_2_LOW
 FBB     CCP_2
+FBB     CCP_2_LOW
 FBC     CCP_2_HIGH
 FBE     CCP_1_LOW
 FBE     CCP_1
 FBF     CCP_1_HIGH
 FE1-FE2 @WRITE_PACKED_MEMORY.P1
 FE1-FE2 @READ_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PACKED_MEMORY.P1
-FE9-FEA @WRITE_PROGRAM_MEMORY.P2
-FE9-FEA @READ_PROGRAM_MEMORY.P3
-FE9-FEA @READ_PACKED_MEMORY.P4
-FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
-FF6-FF8 @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 0000BA  serial_rcv_isr
 0000EC  @PUTCHAR_BIU_1
 00010A  serial_td_isr
-000136  @const707.call
-000146  uart_init
-000182  uart_bputc
-0001B8  @PSTRINGC_687
-0001DA  uart_bgetc
-0001FC  MAIN
-0001FC  @cinit1
-000226  @cinit2
+000136  @GOTOPTR
+000144  @const726.call
+00015A  @const736.call
+00016A  uart_init
+0001A6  uart_bputc
+0001DE  @PSTRINGC_687
+0001FE  uart_bgetc
+00021E  wait_for_start
+000244  wait_for_adr
+000260  parse_id
+00027C  parse_length
+000298  parse_data
+0002DA  crc_check
+000316  parse_crc
+000346  parse_end
+00037C  parse_uart_data
+000388  MAIN
+000388  @cinit1
+0003C0  @cinit2
 
 Project Directory:
     F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\
 
 Project Files:
-    main.c                                                  [21-Nov-15 22:20  CRC=EED36053]
+    main.c                                                  [22-Nov-15 16:35  CRC=EED36053]
     main.h                                                  [19-Nov-15 23:26  CRC=004C7DDD]
     C:\Program Files\PICC\devices\18F4431.h                 [17-Apr-15 14:50  CRC=717083EF]
-    uart.h                                                  [21-Nov-15 22:19  CRC=8017E1C0]
-    uart.c                                                  [21-Nov-15 22:19  CRC=458EDD67]
+    uart.h                                                  [22-Nov-15 19:22  CRC=724439DA]
+    uart.c                                                  [22-Nov-15 19:32  CRC=536F28F9]
 
-Source signature=6BC5FEAD
+Source signature=79B2EDEB
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=BD2F
+Hex file CRC=DCB6
 
 Units:
     main (main)
