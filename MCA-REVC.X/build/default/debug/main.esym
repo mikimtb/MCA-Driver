@@ -1,8 +1,9 @@
 D G "__PCH__" 0 0 ""5.045""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""23-Nov-15""
-D G "__TIME__" 0 0 ""00:39:05""
+D G "__TIME__" 0 0 ""00:06:15""
 D G "_UNICODE" 0 0 ""?""
+D G "__DEBUG" 0 0 "1"
 D G "__18F4431" 0 0 "1" "* File:   main.c"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
@@ -1263,140 +1264,132 @@ F N "serial_rcv_isr" 3 11 ""
 f G "serial_rcv_isr" 3 11 "void()" `684 
 F N "serial_td_isr" 3 12 ""
 f G "serial_td_isr" 3 12 "void()" `685 
-F N "timer1_overflow_isr" 3 13 ""
-f G "timer1_overflow_isr" 3 13 "void()" `686 
-F N "uart_bgetc" 3 14 ""
-f G "uart_bgetc" 3 14 "int8()" `687 
-F N "uart_bputc" 3 15 ""
-V L "??65535" 3 15 "int8" `689 
-f G "uart_bputc" 3 15 "void(int8 )" `688 
-F N "uart_init" 3 16 ""
-V L "??65535" 3 16 "int8" `691 
-V L "??65535" 3 16 "int8" `692 
-f G "uart_init" 3 16 "void(int8 ,int8 )" `690  "Uart parser state machine states *"
-F N "parse_uart_data" 3 18 ""
-f G "parse_uart_data" 3 18 "void()" `693 
-F N "wait_for_start" 3 19 ""
-f G "wait_for_start" 3 19 "void()" `694  "Waits for the # character"
-F N "wait_for_adr" 3 20 ""
-f G "wait_for_adr" 3 20 "void()" `695  "Wait for device address"
-F N "parse_id" 3 21 ""
-f G "parse_id" 3 21 "void()" `696  "Reads the 3 char identifier, stores it in data_id"
-F N "parse_length" 3 22 ""
-f G "parse_length" 3 22 "void()" `697  "Reads [LENGTH] field, stores it in data_length"
-F N "parse_data" 3 23 ""
-f G "parse_data" 3 23 "void()" `698  "Reads the data into data_buffer[]"
-F N "parse_crc" 3 24 ""
-f G "parse_crc" 3 24 "void()" `699  "Reads the crc checksum (and checks the data)"
-F N "parse_end" 3 25 ""
-f G "parse_end" 3 25 "void()" `700  "End of data packet ($) handling.. start all over."
-F N "crc_check" 3 26 ""
-f G "crc_check" 3 26 "int8()" `701  "UART_H *"
-C L "crc_check" 4 2 13 "FUNCTION"
+F N "uart_bgetc" 3 13 ""
+f G "uart_bgetc" 3 13 "int8()" `686 
+F N "uart_bputc" 3 14 ""
+V L "??65535" 3 14 "int8" `688 
+f G "uart_bputc" 3 14 "void(int8 )" `687 
+F N "uart_init" 3 15 ""
+V L "??65535" 3 15 "int8" `690 
+V L "??65535" 3 15 "int8" `691 
+f G "uart_init" 3 15 "void(int8 ,int8 )" `689  "Uart parser state machine states *"
+F N "parse_uart_data" 3 17 ""
+f G "parse_uart_data" 3 17 "void()" `692 
+F N "wait_for_start" 3 18 ""
+f G "wait_for_start" 3 18 "void()" `693  "Waits for the # character"
+F N "wait_for_adr" 3 19 ""
+f G "wait_for_adr" 3 19 "void()" `694  "Wait for device address"
+F N "parse_id" 3 20 ""
+f G "parse_id" 3 20 "void()" `695  "Reads the 3 char identifier, stores it in data_id"
+F N "parse_length" 3 21 ""
+f G "parse_length" 3 21 "void()" `696  "Reads [LENGTH] field, stores it in data_length"
+F N "parse_data" 3 22 ""
+f G "parse_data" 3 22 "void()" `697  "Reads the data into data_buffer[]"
+F N "parse_crc" 3 23 ""
+f G "parse_crc" 3 23 "void()" `698  "Reads the crc checksum (and checks the data)"
+F N "parse_end" 3 24 ""
+f G "parse_end" 3 24 "void()" `699  "End of data packet (#) handling.. start all over."
+F N "crc_check" 3 25 ""
+f G "crc_check" 3 25 "int8()" `700  "UART_H *"
+C L "crc_check" 4 1 1 "*"
+C L "crc_check" 4 1 1 "*"
+C L "crc_check" 4 1 1 "*"
 C L "crc_check" 3 1 1 "*"
 C L "crc_check" 3 1 1 "*"
 C L "crc_check" 3 1 2 "*"
-D G "UART_RX_TIMEOUT" 4 24 "1" "Timeout in mS"
-D G "TIMER1_REFRESH" 4 25 " (long)(65536 - (UART_RX_TIMEOUT * 10000))"
-D G "UART_BUFFER_SIZE" 4 26 "64"
-D G "DATA_BUFFER_SIZE" 4 27 "32"
-D G "uart_bkbhit" 4 28 " (in.next_in!=in.next_out)"
-C L "crc_check" 4 23 1 "FUNCTION"
-T G "t_buffer" 4 36 "{int8[64] uart_buffer,int8 next_in,int8 next_out}" `706 
-T G "t_package" 4 45 "{int8[32] data_buffer,int8 dev_address,int8 ID,int8 data_length,int8 crc}" `713 
-F N "*t_fptr" 4 47 ""
-T G "*t_fptr" 4 47 "void()" `714  "Variables"
-C L "*t_fptr" 4 23 1 "FUNCTION"
-V G "in" 4 50 "t_buffer" `716 
-V G "out" 4 51 "t_buffer" `717 
-C L "*t_fptr" 4 23 1 "FUNCTION"
-V G "data" 4 53 "t_package" `718 
-C L "*t_fptr" 4 23 1 "FUNCTION"
-V G "parse_next" 4 56 "t_fptr" `719 
-C L "*t_fptr" 4 23 1 "FUNCTION"
-V G "count" 4 57 "int8" `720 
-C L "*t_fptr" 4 23 2 "FUNCTION"
-C L "*t_fptr" 4 59 1 "*"
-F N "serial_rcv_isr" 4 63 ""
-F G "serial_rcv_isr" 4 64 "void()" `684 
-V L "t" 4 65 "int8" `721 
-C L "serial_rcv_isr" 4 59 1 "FUNCTION"
-C L "serial_td_isr" 4 73 1 "*"
-F N "serial_td_isr" 4 77 ""
-F G "serial_td_isr" 4 78 "void()" `685 
-C L "timer1_overflow_isr" 4 87 1 "*"
-F N "timer1_overflow_isr" 4 91 ""
-F G "timer1_overflow_isr" 4 92 "void()" `686 
-C L "timer1_overflow_isr" 4 87 2 "FUNCTION"
-C L "uart_bgetc" 4 99 1 "*"
-C L "uart_bgetc" 4 99 1 "*"
-F N "uart_bgetc" 4 103 ""
-F G "uart_bgetc" 4 104 "int8()" `687 
-V L "c" 4 105 "int8" `722 
-C L "uart_bputc" 4 111 1 "*"
-C L "uart_bputc" 4 111 1 "*"
-F N "uart_bputc" 4 115 ""
-V L "c" 4 115 "int8" `724 
-F G "uart_bputc" 4 116 "void(int8 c)" `688 
-V L "restart" 4 117 "int1" `723 
-V L "ni" 4 118 "int8" `724 
-C L "uart_init" 4 128 1 "*"
-C L "uart_init" 4 128 1 "*"
-C L "uart_init" 4 128 1 "*"
-F N "uart_init" 4 133 ""
-V L "baudrate" 4 133 "int8" `691 
-V L "dev_id" 4 133 "int8" `727 
-F G "uart_init" 4 134 "void(int8 baudrate,int8 dev_id)" `690 
-V L "divisor" 4 135 "int16" `725 
-C L "uart_init" 4 128 1 "FUNCTION"
-C L "uart_init" 4 128 1 "FUNCTION"
-C L "uart_init" 4 128 1 "FUNCTION"
-C L "uart_init" 4 128 1 "FUNCTION"
-C L "uart_init" 4 128 5 "FUNCTION"
-C L "uart_init" 4 128 2 "FUNCTION"
-C L "parse_uart_data" 4 170 1 "*"
-F N "parse_uart_data" 4 173 ""
-F G "parse_uart_data" 4 174 "void()" `693 
-C L "wait_for_start" 4 177 1 "*"
-F N "wait_for_start" 4 180 ""
-F G "wait_for_start" 4 181 "void()" `694  "* If there is no data available, return */"
-C L "wait_for_start" 4 177 1 "FUNCTION"
-C L "wait_for_start" 4 177 1 "FUNCTION"
-C L "wait_for_start" 4 177 1 "FUNCTION"
-C L "wait_for_adr" 4 202 1 "*"
-F N "wait_for_adr" 4 205 ""
-F G "wait_for_adr" 4 206 "void()" `695  "* If there is no data available, return */"
-C L "parse_id" 4 216 1 "*"
-F N "parse_id" 4 219 ""
-F G "parse_id" 4 220 "void()" `696  "* If there is no data available, return */"
-C L "parse_length" 4 229 1 "*"
-F N "parse_length" 4 232 ""
-F G "parse_length" 4 233 "void()" `697  "* If there is no data available, return */"
-C L "parse_data" 4 242 1 "*"
-F N "parse_data" 4 245 ""
-F G "parse_data" 4 246 "void()" `698  "* If there is no data available, return */"
-C L "parse_data" 4 242 2 "FUNCTION"
-C L "parse_data" 4 242 1 "FUNCTION"
-C L "parse_data" 4 242 1 "FUNCTION"
-C L "parse_crc" 4 262 1 "*"
-F N "parse_crc" 4 265 ""
-F G "parse_crc" 4 266 "void()" `699  "* If there is no data available, return */"
-C L "parse_crc" 4 262 1 "FUNCTION"
-C L "parse_crc" 4 262 2 "FUNCTION"
-C L "parse_end" 4 283 1 "*"
-F N "parse_end" 4 286 ""
-F G "parse_end" 4 287 "void()" `700  "* If there is no data available, return */"
-C L "parse_end" 4 283 2 "FUNCTION"
-C L "parse_end" 4 283 2 "FUNCTION"
-C L "parse_end" 4 283 1 "FUNCTION"
-C L "crc_check" 4 306 1 "*"
-C L "crc_check" 4 306 1 "*"
-F N "crc_check" 4 310 ""
-F G "crc_check" 4 311 "int8()" `701 
-V L "i" 4 312 "int8" `732 
-V L "crc8" 4 313 "int8" `733 
+D G "UART_RX_TIMEOUT" 4 11 "1" "Timeout in mS"
+D G "TIMER1_REFRESH" 4 12 " (long)(65536 - (UART_RX_TIMEOUT * 10000))"
+D G "UART_BUFFER_SIZE" 4 13 "64"
+D G "DATA_BUFFER_SIZE" 4 14 "32"
+D G "uart_bkbhit" 4 15 " (in.next_in!=in.next_out)"
+C L "crc_check" 4 10 1 "FUNCTION"
+T G "t_buffer" 4 23 "{int8[64] uart_buffer,int8 next_in,int8 next_out}" `705 
+T G "t_package" 4 32 "{int8[32] data_buffer,int8 dev_address,int8 ID,int8 data_length,int8 crc}" `712 
+F N "*t_fptr" 4 34 ""
+T G "*t_fptr" 4 34 "void()" `713  "Variables"
+C L "*t_fptr" 4 10 1 "FUNCTION"
+V G "in" 4 37 "t_buffer" `715 
+V G "out" 4 38 "t_buffer" `716 
+C L "*t_fptr" 4 10 1 "FUNCTION"
+V G "data" 4 40 "t_package" `717 
+C L "*t_fptr" 4 10 1 "FUNCTION"
+V G "parse_next" 4 43 "t_fptr" `718 
+C L "*t_fptr" 4 10 1 "FUNCTION"
+V G "count" 4 44 "int8" `719 
+C L "*t_fptr" 4 10 2 "FUNCTION"
+C L "*t_fptr" 4 46 1 "*"
+F N "serial_rcv_isr" 4 50 ""
+F G "serial_rcv_isr" 4 51 "void()" `684 
+V L "t" 4 52 "int8" `720 
+C L "serial_rcv_isr" 4 46 1 "FUNCTION"
+C L "serial_td_isr" 4 60 1 "*"
+F N "serial_td_isr" 4 64 ""
+F G "serial_td_isr" 4 65 "void()" `685 
+C G "" 4 74 1 "*"
+V G "timer1_isr_count" 4 77 "int8" `721 
+F N "timer1_overflow_isr" 4 79 ""
+F G "timer1_overflow_isr" 4 80 "void()" `722  "if(timer1_isr_count < 1)"
+C L "timer1_overflow_isr" 4 74 3 "FUNCTION"
+C L "timer1_overflow_isr" 4 74 1 "FUNCTION"
+C L "uart_bgetc" 4 92 1 "*"
+C L "uart_bgetc" 4 92 1 "*"
+F N "uart_bgetc" 4 96 ""
+F G "uart_bgetc" 4 97 "int8()" `686 
+V L "c" 4 98 "int8" `728  "while(!uart_bkbhit);                          // This should be checked"
+C L "uart_bgetc" 4 92 2 "FUNCTION"
+C L "uart_bputc" 4 107 1 "*"
+C L "uart_bputc" 4 107 1 "*"
+F N "uart_bputc" 4 111 ""
+V L "c" 4 111 "int8" `730 
+F G "uart_bputc" 4 112 "void(int8 c)" `687 
+V L "restart" 4 113 "int1" `729 
+V L "ni" 4 114 "int8" `730 
+C L "uart_init" 4 124 1 "*"
+C L "uart_init" 4 124 1 "*"
+C L "uart_init" 4 124 1 "*"
+F N "uart_init" 4 129 ""
+V L "baudrate" 4 129 "int8" `690 
+V L "dev_id" 4 129 "int8" `733 
+F G "uart_init" 4 130 "void(int8 baudrate,int8 dev_id)" `689 
+V L "divisor" 4 131 "int16" `731 
+C L "uart_init" 4 124 1 "FUNCTION"
+C L "uart_init" 4 124 1 "FUNCTION"
+C L "uart_init" 4 124 1 "FUNCTION"
+C L "uart_init" 4 124 1 "FUNCTION"
+C L "uart_init" 4 124 5 "FUNCTION"
+C L "uart_init" 4 124 2 "FUNCTION"
+F N "parse_uart_data" 4 167 ""
+F G "parse_uart_data" 4 168 "void()" `692 
+F N "wait_for_start" 4 172 ""
+F G "wait_for_start" 4 173 "void()" `693  "* If there is no data available, return */"
+C L "wait_for_start" 4 124 1 "FUNCTION"
+C L "wait_for_start" 4 124 1 "FUNCTION"
+C L "wait_for_start" 4 124 1 "FUNCTION"
+F N "wait_for_adr" 4 195 ""
+F G "wait_for_adr" 4 196 "void()" `694  "* If there is no data available, return */"
+C L "wait_for_adr" 4 124 1 "FUNCTION"
+F N "parse_id" 4 207 ""
+F G "parse_id" 4 208 "void()" `695  "* If there is no data available, return */"
+F N "parse_length" 4 218 ""
+F G "parse_length" 4 219 "void()" `696  "* If there is no data available, return */"
+F N "parse_data" 4 229 ""
+F G "parse_data" 4 230 "void()" `697  "* If there is no data available, return */"
+C L "parse_data" 4 124 2 "FUNCTION"
+C L "parse_data" 4 124 1 "FUNCTION"
+C L "parse_data" 4 124 1 "FUNCTION"
+F N "parse_crc" 4 247 ""
+F G "parse_crc" 4 248 "void()" `698  "* If there is no data available, return */"
+C L "parse_crc" 4 124 1 "FUNCTION"
+F N "parse_end" 4 264 ""
+F G "parse_end" 4 265 "void()" `699  "* If there is no data available, return */"
+C L "parse_end" 4 124 2 "FUNCTION"
+C L "parse_end" 4 124 1 "FUNCTION"
+F N "crc_check" 4 284 ""
+F G "crc_check" 4 285 "int8()" `700 
+V L "i" 4 286 "int8" `734 
+V L "crc8" 4 287 "int8" `735 
 F N "MAIN" 0 13 ""
-F G "MAIN" 0 14 "void()" `734 
+F G "MAIN" 0 14 "void()" `736 
 C L "MAIN" 0 22 2 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
