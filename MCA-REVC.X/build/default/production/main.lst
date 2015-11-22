@@ -1,16 +1,16 @@
-CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
+CCS PCH C Compiler, Version 5.045, 5967               23-Nov-15 00:39
 
                Filename:   F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\build\default\production\main.lst
 
-               ROM used:   1064 bytes (6%)
-                           Largest free fragment is 15316
+               ROM used:   1158 bytes (7%)
+                           Largest free fragment is 15222
                RAM used:   198 (26%) at main() level
                            208 (27%) worst case
                Stack used: 1 locations (0 in main + 1 for interrupts)
                Stack size: 31
 
 *
-0000:  GOTO   0388
+0000:  GOTO   03E6
 *
 0008:  MOVWF  04
 000A:  MOVFF  FD8,05
@@ -32,35 +32,39 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 0048:  MOVFF  01,0F
 004C:  MOVFF  02,10
 0050:  MOVFF  03,11
-0054:  BTFSS  F9D.5
+0054:  BTFSS  F9D.0
 0056:  GOTO   0060
-005A:  BTFSC  F9E.5
-005C:  GOTO   00BA
-0060:  BTFSS  F9D.4
+005A:  BTFSC  F9E.0
+005C:  GOTO   0142
+0060:  BTFSS  F9D.5
 0062:  GOTO   006C
-0066:  BTFSC  F9E.4
-0068:  GOTO   010A
-006C:  MOVFF  0E,00
-0070:  MOVFF  0F,01
-0074:  MOVFF  10,02
-0078:  MOVFF  11,03
-007C:  MOVFF  0C,FE9
-0080:  MOVFF  07,FEA
-0084:  BSF    07.7
-0086:  MOVFF  08,FE1
-008A:  MOVFF  09,FE2
-008E:  MOVFF  0A,FD9
-0092:  MOVFF  0B,FDA
-0096:  MOVFF  12,FF3
-009A:  MOVFF  13,FF4
-009E:  MOVFF  14,FFA
-00A2:  MOVFF  15,FF5
-00A6:  MOVFF  16,FF6
-00AA:  MOVFF  17,FF7
-00AE:  MOVF   04,W
-00B0:  MOVFF  06,FE0
-00B4:  MOVFF  05,FD8
-00B8:  RETFIE 0
+0066:  BTFSC  F9E.5
+0068:  GOTO   00C6
+006C:  BTFSS  F9D.4
+006E:  GOTO   0078
+0072:  BTFSC  F9E.4
+0074:  GOTO   0116
+0078:  MOVFF  0E,00
+007C:  MOVFF  0F,01
+0080:  MOVFF  10,02
+0084:  MOVFF  11,03
+0088:  MOVFF  0C,FE9
+008C:  MOVFF  07,FEA
+0090:  BSF    07.7
+0092:  MOVFF  08,FE1
+0096:  MOVFF  09,FE2
+009A:  MOVFF  0A,FD9
+009E:  MOVFF  0B,FDA
+00A2:  MOVFF  12,FF3
+00A6:  MOVFF  13,FF4
+00AA:  MOVFF  14,FFA
+00AE:  MOVFF  15,FF5
+00B2:  MOVFF  16,FF6
+00B6:  MOVFF  17,FF7
+00BA:  MOVF   04,W
+00BC:  MOVFF  06,FE0
+00C0:  MOVFF  05,FD8
+00C4:  RETFIE 0
 .................... /*  
 ....................  * File:   main.c 
 ....................  * Author: Miroslav 
@@ -92,42 +96,43 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 .................... /////////////////////////////////////////////////////////////////////////// 
 .................... #device PIC18F4431 
 *
-0136:  MOVFF  FEC,FFA
-013A:  MOVF   FED,F
-013C:  MOVFF  FEF,FE8
-0140:  MOVWF  FF9
-0142:  RETURN 0
-0144:  DATA 4D,65
-0146:  DATA 73,73
-0148:  DATA 61,67
-014A:  DATA 65,20
-014C:  DATA 72,65
-014E:  DATA 63,65
-0150:  DATA 69,76
-0152:  DATA 65,20
-0154:  DATA 64,6F
-0156:  DATA 6E,65
-0158:  DATA 2E,00
-015A:  DATA 0D,0A
-015C:  DATA 52,75
-015E:  DATA 6E,6E
-0160:  DATA 69,6E
-0162:  DATA 67,2E
-0164:  DATA 2E,2E
-0166:  DATA 0D,0A
-0168:  DATA 00,00
+0156:  MOVFF  FEC,FFA
+015A:  MOVF   FED,F
+015C:  MOVFF  FEF,FE8
+0160:  MOVWF  FF9
+0162:  RETURN 0
+0164:  DATA 4D,65
+0166:  DATA 73,73
+0168:  DATA 61,67
+016A:  DATA 65,20
+016C:  DATA 72,65
+016E:  DATA 63,65
+0170:  DATA 69,76
+0172:  DATA 65,20
+0174:  DATA 64,6F
+0176:  DATA 6E,65
+0178:  DATA 2E,0D
+017A:  DATA 0A,00
+017C:  DATA 0D,0A
+017E:  DATA 52,75
+0180:  DATA 6E,6E
+0182:  DATA 69,6E
+0184:  DATA 67,2E
+0186:  DATA 2E,2E
+0188:  DATA 0D,0A
+018A:  DATA 00,00
 *
-01DE:  TBLRD*+
-01E0:  MOVF   FF5,F
-01E2:  BZ    01FC
-01E4:  MOVFF  FF6,C6
-01E8:  MOVFF  FF7,C7
-01EC:  MOVFF  FF5,C8
-01F0:  BRA    01A6
-01F2:  MOVFF  C6,FF6
-01F6:  MOVFF  C7,FF7
-01FA:  BRA    01DE
-01FC:  RETURN 0
+0204:  TBLRD*+
+0206:  MOVF   FF5,F
+0208:  BZ    0222
+020A:  MOVFF  FF6,C6
+020E:  MOVFF  FF7,C7
+0212:  MOVFF  FF5,C8
+0216:  BRA    01CC
+0218:  MOVFF  C6,FF6
+021C:  MOVFF  C7,FF7
+0220:  BRA    0204
+0222:  RETURN 0
 ....................  
 .................... #list 
 ....................  
@@ -158,19 +163,19 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 .................... #use delay(clock = 40MHZ) 
 .................... #use rs232(xmit=TX_PIN, rcv=RX_PIN, enable=RS485_RW) 
 *
-00EC:  BCF    F94.0
-00EE:  BSF    F8B.0
-00F0:  BTFSS  F9E.4
-00F2:  BRA    00F0
-00F4:  BCF    F94.0
-00F6:  BSF    F8B.0
-00F8:  MOVFF  CE,FAD
-00FC:  NOP   
-00FE:  BTFSS  FAC.1
-0100:  BRA    00FE
-0102:  BCF    F94.0
-0104:  BCF    F8B.0
-0106:  GOTO   0124 (RETURN)
+00F8:  BCF    F94.0
+00FA:  BSF    F8B.0
+00FC:  BTFSS  F9E.4
+00FE:  BRA    00FC
+0100:  BCF    F94.0
+0102:  BSF    F8B.0
+0104:  MOVFF  CE,FAD
+0108:  NOP   
+010A:  BTFSS  FAC.1
+010C:  BRA    010A
+010E:  BCF    F94.0
+0110:  BCF    F8B.0
+0112:  GOTO   0130 (RETURN)
 ....................   
 .................... // UART Registers and bits 
 .................... #byte TXSTA=0xFAC 
@@ -205,6 +210,7 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 ....................  
 .................... void serial_rcv_isr(void); 
 .................... void serial_td_isr(void); 
+.................... void timer1_overflow_isr(void); 
 .................... BYTE uart_bgetc(void); 
 .................... void uart_bputc(BYTE); 
 .................... void uart_init(unsigned int, BYTE); 
@@ -216,19 +222,32 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 .................... void parse_length(void);    // Reads [LENGTH] field, stores it in data_length 
 .................... void parse_data(void);      // Reads the data into data_buffer[] 
 .................... void parse_crc(void);       // Reads the crc checksum (and checks the data) 
-.................... void parse_end(void);       // End of data packet (#) handling.. start all over. 
+.................... void parse_end(void);       // End of data packet ($) handling.. start all over. 
 .................... short crc_check(void);       
 ....................  
 .................... #endif	/* UART_H */ 
 ....................  
 ....................  
 .................... #include "uart.c" 
-.................... /* 
-....................  * File:   uart.c 
-....................  * Author: Miroslav 
-....................  * 
-....................  * Created on November 19, 2015, 11:22 PM 
-....................  */ 
+.................... /******************************************************************************/ 
+.................... /* File:   uart.c                                                             */ 
+.................... /* Author: Miroslav Bozic                                                     */ 
+.................... /*                                                                            */ 
+.................... /* Library for UART receive and transmit data using custom protocol           */                           
+.................... /* Data package structure:                                                    */ 
+.................... /*   # [DEV_ADR] [MESSAGE_ID] [LENGTH] [DATA<0>,...DATA<LENGTH-1>] [CRC] $    */ 
+.................... /* User parameters:                                                           */ 
+.................... /*  UART_RX_TIMEOUT - UART RX timeout defined in ms (max 5ms)                 */ 
+.................... /*  UART_BUFFER_SIZE - UART circular RX and TX buffers size                   */ 
+.................... /*  DATA_BUFFER_SIZE - DATA buffer size                                       */ 
+.................... /*                                                                            */ 
+.................... /* User functions:                                                            */ 
+.................... /* void uart_init(unsigned int baudrate, BYTE dev_id) - Must be called before */ 
+.................... /* other function in library                                                  */ 
+.................... /*                                                                            */ 
+.................... /* void parse_uart_data() - call in while endless loop to start FSM parser    */ 
+.................... /*                                                                            */ 
+.................... /******************************************************************************/ 
 ....................  
 .................... #include "uart.h" 
 .................... /*  
@@ -243,6 +262,7 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 ....................  
 .................... void serial_rcv_isr(void); 
 .................... void serial_td_isr(void); 
+.................... void timer1_overflow_isr(void); 
 .................... BYTE uart_bgetc(void); 
 .................... void uart_bputc(BYTE); 
 .................... void uart_init(unsigned int, BYTE); 
@@ -254,7 +274,7 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 .................... void parse_length(void);    // Reads [LENGTH] field, stores it in data_length 
 .................... void parse_data(void);      // Reads the data into data_buffer[] 
 .................... void parse_crc(void);       // Reads the crc checksum (and checks the data) 
-.................... void parse_end(void);       // End of data packet (#) handling.. start all over. 
+.................... void parse_end(void);       // End of data packet ($) handling.. start all over. 
 .................... short crc_check(void);       
 ....................  
 .................... #endif	/* UART_H */ 
@@ -262,6 +282,8 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 ....................  
 ....................  
 .................... //Defines 
+.................... #define UART_RX_TIMEOUT     1                   // Timeout in mS 
+.................... #define TIMER1_REFRESH      (long)(65536 - (UART_RX_TIMEOUT * 10000)) 
 .................... #define UART_BUFFER_SIZE    64 
 .................... #define DATA_BUFFER_SIZE    32     
 .................... #define uart_bkbhit (in.next_in!=in.next_out) 
@@ -292,7 +314,8 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 .................... t_package data = {{0}, 0, 0, 0}; 
 ....................  
 .................... //Pointer to a function that takes no parameters and returns nothing. 
-.................... t_fptr parse_next = wait_for_start;          //Initialize the pointer to point to first state 
+.................... t_fptr parse_next = wait_for_start;          // Initialize the pointer to point to first state 
+.................... int count = 0;                               // Variable used in parse_data function 
 .................... // Functions 
 .................... /** 
 ....................  * UART receive interrupt handler 
@@ -304,66 +327,86 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 ....................      
 ....................     in.uart_buffer[in.next_in] = getc(); 
 *
-00BA:  CLRF   03
-00BC:  MOVF   59,W
-00BE:  ADDLW  19
-00C0:  MOVWF  FE9
-00C2:  MOVLW  00
-00C4:  ADDWFC 03,W
-00C6:  MOVWF  FEA
-00C8:  BTFSS  F9E.5
-00CA:  BRA    00C8
-00CC:  MOVFF  FAE,FEF
+00C6:  CLRF   03
+00C8:  MOVF   59,W
+00CA:  ADDLW  19
+00CC:  MOVWF  FE9
+00CE:  MOVLW  00
+00D0:  ADDWFC 03,W
+00D2:  MOVWF  FEA
+00D4:  BTFSS  F9E.5
+00D6:  BRA    00D4
+00D8:  MOVFF  FAE,FEF
 ....................     t = in.next_in; 
-00D0:  MOVFF  59,CD
+00DC:  MOVFF  59,CD
 ....................     in.next_in = (in.next_in + 1) % UART_BUFFER_SIZE; 
-00D4:  MOVLW  01
-00D6:  ADDWF  59,W
-00D8:  ANDLW  3F
-00DA:  MOVWF  59
+00E0:  MOVLW  01
+00E2:  ADDWF  59,W
+00E4:  ANDLW  3F
+00E6:  MOVWF  59
 ....................     if (in.next_in == in.next_out) 
-00DC:  MOVF   5A,W
-00DE:  SUBWF  59,W
-00E0:  BNZ   00E6
+00E8:  MOVF   5A,W
+00EA:  SUBWF  59,W
+00EC:  BNZ   00F2
 ....................         in.next_in = t;                                // Buffer full 
-00E2:  MOVFF  CD,59
+00EE:  MOVFF  CD,59
 .................... } 
 .................... /** 
 ....................  * UART transmit interrupt handler 
 ....................  */ 
-00E6:  BCF    F9E.5
-00E8:  GOTO   006C
+00F2:  BCF    F9E.5
+00F4:  GOTO   0078
 .................... #int_tbe 
 .................... void serial_td_isr() 
 .................... { 
 ....................     if (out.next_in != out.next_out) 
 *
-010A:  MOVF   x9C,W
-010C:  SUBWF  x9B,W
-010E:  BZ    012E
+0116:  MOVF   x9C,W
+0118:  SUBWF  x9B,W
+011A:  BZ    013A
 ....................     { 
 ....................         putc(out.uart_buffer[out.next_out]); 
-0110:  CLRF   03
-0112:  MOVF   x9C,W
-0114:  ADDLW  5B
-0116:  MOVWF  FE9
-0118:  MOVLW  00
-011A:  ADDWFC 03,W
-011C:  MOVWF  FEA
-011E:  MOVFF  FEF,CE
-0122:  BRA    00EC
+011C:  CLRF   03
+011E:  MOVF   x9C,W
+0120:  ADDLW  5B
+0122:  MOVWF  FE9
+0124:  MOVLW  00
+0126:  ADDWFC 03,W
+0128:  MOVWF  FEA
+012A:  MOVFF  FEF,CE
+012E:  BRA    00F8
 ....................         out.next_out = (out.next_out + 1) % UART_BUFFER_SIZE; 
-0124:  MOVLW  01
-0126:  ADDWF  x9C,W
-0128:  ANDLW  3F
-012A:  MOVWF  x9C
+0130:  MOVLW  01
+0132:  ADDWF  x9C,W
+0134:  ANDLW  3F
+0136:  MOVWF  x9C
 ....................     } 
-012C:  BRA    0130
+0138:  BRA    013C
 ....................     else 
 ....................         disable_interrupts(int_tbe); 
-012E:  BCF    F9D.4
-0130:  BCF    F9E.4
-0132:  GOTO   006C
+013A:  BCF    F9D.4
+.................... } 
+.................... /** 
+....................  * TIMER1 overflow interrupt handler 
+....................  */ 
+013C:  BCF    F9E.4
+013E:  GOTO   0078
+.................... #int_timer1 
+.................... void timer1_overflow_isr() 
+.................... { 
+....................     parse_next = wait_for_start; 
+0142:  MOVLW  02
+0144:  MOVWF  03
+0146:  MOVLW  44
+0148:  MOVWF  xC1
+014A:  MOVFF  03,C2
+....................     disable_interrupts(int_timer1); 
+014E:  BCF    F9D.0
+....................      
+....................     /* Request for retransmission should be added here if it's needed */ 
+....................     /* printf(uart_bputc, "Timeout occurred!\r\n");                  */ 
+0150:  BCF    F9E.0
+0152:  GOTO   0078
 .................... } 
 .................... /** 
 ....................  * uart_bgetc, Function return one byte from uart input buffer 
@@ -373,27 +416,24 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 .................... { 
 ....................     BYTE c; 
 ....................      
-....................     //while(!uart_bkbhit);                          // This should be checked 
-....................                                                     // in parser before state 
-....................                                                     //machine is called 
 ....................     c = in.uart_buffer[in.next_out]; 
 *
-01FE:  CLRF   03
-0200:  MOVF   5A,W
-0202:  ADDLW  19
-0204:  MOVWF  FE9
-0206:  MOVLW  00
-0208:  ADDWFC 03,W
-020A:  MOVWF  FEA
-020C:  MOVFF  FEF,C8
+0224:  CLRF   03
+0226:  MOVF   5A,W
+0228:  ADDLW  19
+022A:  MOVWF  FE9
+022C:  MOVLW  00
+022E:  ADDWFC 03,W
+0230:  MOVWF  FEA
+0232:  MOVFF  FEF,C8
 ....................     in.next_out = (in.next_out + 1) % UART_BUFFER_SIZE; 
-0210:  MOVLW  01
-0212:  ADDWF  5A,W
-0214:  ANDLW  3F
-0216:  MOVWF  5A
+0236:  MOVLW  01
+0238:  ADDWF  5A,W
+023A:  ANDLW  3F
+023C:  MOVWF  5A
 ....................     return (c); 
-0218:  MOVFF  C8,01
-021C:  RETURN 0
+023E:  MOVFF  C8,01
+0242:  RETURN 0
 .................... } 
 .................... /** 
 ....................  * bputc, Function add one byte to uart output buffer 
@@ -406,37 +446,37 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 ....................      
 ....................     restart = out.next_in == out.next_out; 
 *
-01A6:  BCF    xC9.0
-01A8:  MOVF   x9C,W
-01AA:  SUBWF  x9B,W
-01AC:  BNZ   01B0
-01AE:  BSF    xC9.0
+01CC:  BCF    xC9.0
+01CE:  MOVF   x9C,W
+01D0:  SUBWF  x9B,W
+01D2:  BNZ   01D6
+01D4:  BSF    xC9.0
 ....................     out.uart_buffer[out.next_in] = c; 
-01B0:  CLRF   03
-01B2:  MOVF   x9B,W
-01B4:  ADDLW  5B
-01B6:  MOVWF  FE9
-01B8:  MOVLW  00
-01BA:  ADDWFC 03,W
-01BC:  MOVWF  FEA
-01BE:  MOVFF  C8,FEF
+01D6:  CLRF   03
+01D8:  MOVF   x9B,W
+01DA:  ADDLW  5B
+01DC:  MOVWF  FE9
+01DE:  MOVLW  00
+01E0:  ADDWFC 03,W
+01E2:  MOVWF  FEA
+01E4:  MOVFF  C8,FEF
 ....................     ni = (out.next_in + 1) % UART_BUFFER_SIZE; 
-01C2:  MOVLW  01
-01C4:  ADDWF  x9B,W
-01C6:  ANDLW  3F
-01C8:  MOVWF  xCA
+01E8:  MOVLW  01
+01EA:  ADDWF  x9B,W
+01EC:  ANDLW  3F
+01EE:  MOVWF  xCA
 ....................     while(ni == out.next_out); 
-01CA:  MOVF   x9C,W
-01CC:  SUBWF  xCA,W
-01CE:  BZ    01CA
+01F0:  MOVF   x9C,W
+01F2:  SUBWF  xCA,W
+01F4:  BZ    01F0
 ....................     out.next_in = ni; 
-01D0:  MOVFF  CA,9B
+01F6:  MOVFF  CA,9B
 ....................     if (restart) 
-01D4:  BTFSS  xC9.0
-01D6:  BRA    01DA
+01FA:  BTFSS  xC9.0
+01FC:  BRA    0200
 ....................         enable_interrupts(int_tbe); 
-01D8:  BSF    F9D.4
-01DA:  GOTO   01F2 (RETURN)
+01FE:  BSF    F9D.4
+0200:  GOTO   0218 (RETURN)
 .................... } 
 .................... /** 
 ....................  * uart_init, Function configure uart peripheral 
@@ -449,439 +489,509 @@ CCS PCH C Compiler, Version 5.045, 5967               22-Nov-15 19:40
 ....................      
 ....................     switch (baudrate) 
 *
-016A:  MOVF   xC6,W
-016C:  XORLW  01
-016E:  BZ    017A
-0170:  XORLW  03
-0172:  BZ    0184
-0174:  XORLW  01
-0176:  BZ    018C
-0178:  BRA    0192
+018C:  MOVF   xC6,W
+018E:  XORLW  01
+0190:  BZ    019C
+0192:  XORLW  03
+0194:  BZ    01A6
+0196:  XORLW  01
+0198:  BZ    01AE
+019A:  BRA    01B4
 ....................     { 
 ....................         case 1: 
 ....................             //setup_uart(19200); 
 ....................             divisor = 520; 
-017A:  MOVLW  02
-017C:  MOVWF  xC9
-017E:  MOVLW  08
-0180:  MOVWF  xC8
+019C:  MOVLW  02
+019E:  MOVWF  xC9
+01A0:  MOVLW  08
+01A2:  MOVWF  xC8
 ....................             break; 
-0182:  BRA    0192
+01A4:  BRA    01B4
 ....................         case 2: 
 ....................             //setup_uart(115200); 
 ....................             divisor = 85; 
-0184:  CLRF   xC9
-0186:  MOVLW  55
-0188:  MOVWF  xC8
+01A6:  CLRF   xC9
+01A8:  MOVLW  55
+01AA:  MOVWF  xC8
 ....................             break; 
-018A:  BRA    0192
+01AC:  BRA    01B4
 ....................         case 3: 
 ....................             //setup_uart(256000); 
 ....................             divisor = 38; 
-018C:  CLRF   xC9
-018E:  MOVLW  26
-0190:  MOVWF  xC8
+01AE:  CLRF   xC9
+01B0:  MOVLW  26
+01B2:  MOVWF  xC8
 ....................             break; 
 ....................     } 
 ....................      
 ....................     // Switch to 16bit mode 
 ....................     SYNC = 0; 
-0192:  BCF    FAC.4
+01B4:  BCF    FAC.4
 ....................     BRGH = 1; 
-0194:  BSF    FAC.2
+01B6:  BSF    FAC.2
 ....................     BRG16 = 1; 
-0196:  BSF    FAA.3
+01B8:  BSF    FAA.3
 ....................     // Select 9-bit reception 
 ....................     //RX9 = 0; 
 ....................     // Disable uart address detecion on receive 
 ....................     //ADDEN = 0; 
 ....................     // Configure uart speed 
 ....................     SPBRG = divisor; 
-0198:  MOVFF  C9,FB0
-019C:  MOVFF  C8,FAF
-....................     //fp_parser = wait_for_start; 
+01BA:  MOVFF  C9,FB0
+01BE:  MOVFF  C8,FAF
+....................      
+....................     // Timer 1 is used as timeout generator 
+....................     // The time is defined using UART_RX_TIMEOUT 
+....................     setup_timer_1(T1_INTERNAL | T1_DIV_BY_8); 
+01C2:  MOVLW  B5
+01C4:  MOVWF  FCD
+....................      
 ....................     enable_interrupts(INT_RDA); 
-01A0:  BSF    F9D.5
-01A2:  GOTO   0410 (RETURN)
+01C6:  BSF    F9D.5
+01C8:  GOTO   046E (RETURN)
 .................... } 
-....................  
+.................... /** 
+....................  * Function that call Finite State Machine parser 
+....................  */ 
 .................... void parse_uart_data() 
 .................... { 
 ....................     (*parse_next)(); 
 *
-037C:  CLRF   FEA
-037E:  MOVLW  C1
-0380:  MOVWF  FE9
-0382:  RCALL  0136
-0384:  GOTO   041E (RETURN)
+03DA:  CLRF   FEA
+03DC:  MOVLW  C1
+03DE:  MOVWF  FE9
+03E0:  RCALL  0156
+03E2:  GOTO   047C (RETURN)
 .................... } 
-....................  
+.................... /** 
+....................  * Function wait and check start character of a package 
+....................  */ 
 .................... void wait_for_start() 
 .................... { 
 ....................     //* If there is no data available, return */ 
 ....................     if (!uart_bkbhit) 
 *
-021E:  MOVF   5A,W
-0220:  SUBWF  59,W
-0222:  BNZ   0226
-....................         return; 
-0224:  BRA    0242
-....................      
-....................     /* If the data is start character, we update the state */ 
-....................     if (uart_bgetc() == '#') 
-0226:  RCALL  01FE
-0228:  MOVF   01,W
-022A:  SUBLW  23
-022C:  BNZ   0242
-....................     { 
-....................         /* Initialize data variables, just in case */ 
-....................         data.dev_address = 0; 
-022E:  CLRF   xBD
-....................         data.ID = 0; 
-0230:  CLRF   xBE
-....................         data.data_length = 0; 
-0232:  CLRF   xBF
-....................         data.crc = 0; 
-0234:  CLRF   xC0
-....................         parse_next = wait_for_adr; // Next we parse the [ID] field 
-0236:  MOVLW  02
-0238:  MOVWF  03
-023A:  MOVLW  44
-023C:  MOVWF  xC1
-023E:  MOVFF  03,C2
-....................     } 
-0242:  RETURN 0
-.................... } 
-....................  
-.................... void wait_for_adr() 
-.................... { 
-....................     //* If there is no data available, return */ 
-....................     if (!uart_bkbhit) 
 0244:  MOVF   5A,W
 0246:  SUBWF  59,W
 0248:  BNZ   024C
 ....................         return; 
-024A:  BRA    025E
+024A:  BRA    0276
+....................      
+....................     /* If the data is start character, we update the state */ 
+....................     if (uart_bgetc() == '#') 
+024C:  RCALL  0224
+024E:  MOVF   01,W
+0250:  SUBLW  23
+0252:  BNZ   0276
+....................     { 
+....................         /* Initialize data variables, just in case */ 
+....................         data.dev_address = 0; 
+0254:  CLRF   xBD
+....................         data.ID = 0; 
+0256:  CLRF   xBE
+....................         data.data_length = 0; 
+0258:  CLRF   xBF
+....................         data.crc = 0; 
+025A:  CLRF   xC0
+....................         count = 0; 
+025C:  CLRF   xC3
+....................         parse_next = wait_for_adr; // Next we parse the [ID] field 
+025E:  MOVLW  02
+0260:  MOVWF  03
+0262:  MOVLW  78
+0264:  MOVWF  xC1
+0266:  MOVFF  03,C2
+....................          
+....................         set_timer1(TIMER1_REFRESH); 
+026A:  MOVLW  D8
+026C:  MOVWF  FCF
+026E:  MOVLW  F0
+0270:  MOVWF  FCE
+....................         clear_interrupt(int_timer1); 
+0272:  BCF    F9E.0
+....................         enable_interrupts(int_timer1); 
+0274:  BSF    F9D.0
+....................     } 
+0276:  RETURN 0
+.................... } 
+.................... /** 
+....................  * Function receive address of a device that should response on message 
+....................  */ 
+.................... void wait_for_adr() 
+.................... { 
+....................     //* If there is no data available, return */ 
+....................     if (!uart_bkbhit) 
+0278:  MOVF   5A,W
+027A:  SUBWF  59,W
+027C:  BNZ   0280
+....................         return; 
+027E:  BRA    029A
 ....................      
 ....................     data.dev_address = uart_bgetc(); 
-024C:  RCALL  01FE
-024E:  MOVFF  01,BD
+0280:  RCALL  0224
+0282:  MOVFF  01,BD
+....................     set_timer1(TIMER1_REFRESH); 
+0286:  MOVLW  D8
+0288:  MOVWF  FCF
+028A:  MOVLW  F0
+028C:  MOVWF  FCE
 ....................     parse_next = parse_id; 
-0252:  MOVLW  02
-0254:  MOVWF  03
-0256:  MOVLW  60
-0258:  MOVWF  xC1
-025A:  MOVFF  03,C2
-025E:  RETURN 0
+028E:  MOVLW  02
+0290:  MOVWF  03
+0292:  MOVLW  9C
+0294:  MOVWF  xC1
+0296:  MOVFF  03,C2
+029A:  RETURN 0
+....................      
 .................... } 
+.................... /** 
+....................  * Function receive package ID identifier 
+....................  */ 
 .................... void parse_id() 
 .................... { 
 ....................     //* If there is no data available, return */ 
 ....................     if (!uart_bkbhit) 
-0260:  MOVF   5A,W
-0262:  SUBWF  59,W
-0264:  BNZ   0268
+029C:  MOVF   5A,W
+029E:  SUBWF  59,W
+02A0:  BNZ   02A4
 ....................         return; 
-0266:  BRA    027A
+02A2:  BRA    02BE
 ....................      
 ....................     data.ID = uart_bgetc(); 
-0268:  RCALL  01FE
-026A:  MOVFF  01,BE
+02A4:  RCALL  0224
+02A6:  MOVFF  01,BE
+....................     set_timer1(TIMER1_REFRESH); 
+02AA:  MOVLW  D8
+02AC:  MOVWF  FCF
+02AE:  MOVLW  F0
+02B0:  MOVWF  FCE
 ....................     parse_next = parse_length; 
-026E:  MOVLW  02
-0270:  MOVWF  03
-0272:  MOVLW  7C
-0274:  MOVWF  xC1
-0276:  MOVFF  03,C2
-027A:  RETURN 0
+02B2:  MOVLW  02
+02B4:  MOVWF  03
+02B6:  MOVLW  C0
+02B8:  MOVWF  xC1
+02BA:  MOVFF  03,C2
+02BE:  RETURN 0
 .................... } 
-....................  
+.................... /** 
+....................  * Function receive data length of a package 
+....................  */ 
 .................... void parse_length() 
 .................... { 
 ....................     //* If there is no data available, return */ 
 ....................     if (!uart_bkbhit) 
-027C:  MOVF   5A,W
-027E:  SUBWF  59,W
-0280:  BNZ   0284
+02C0:  MOVF   5A,W
+02C2:  SUBWF  59,W
+02C4:  BNZ   02C8
 ....................         return; 
-0282:  BRA    0296
+02C6:  BRA    02E2
 ....................      
 ....................     data.data_length = uart_bgetc(); 
-0284:  RCALL  01FE
-0286:  MOVFF  01,BF
+02C8:  RCALL  0224
+02CA:  MOVFF  01,BF
+....................     set_timer1(TIMER1_REFRESH); 
+02CE:  MOVLW  D8
+02D0:  MOVWF  FCF
+02D2:  MOVLW  F0
+02D4:  MOVWF  FCE
 ....................     parse_next = parse_data; 
-028A:  MOVLW  02
-028C:  MOVWF  03
-028E:  MOVLW  98
-0290:  MOVWF  xC1
-0292:  MOVFF  03,C2
-0296:  RETURN 0
+02D6:  MOVLW  02
+02D8:  MOVWF  03
+02DA:  MOVLW  E4
+02DC:  MOVWF  xC1
+02DE:  MOVFF  03,C2
+02E2:  RETURN 0
 .................... } 
-....................  
-.................... int count = 0; 
+.................... /** 
+....................  * Function receive data part of a package 
+....................  */ 
 .................... void parse_data() 
 .................... { 
 ....................     //* If there is no data available, return */ 
 ....................     if (!uart_bkbhit) 
-0298:  MOVF   5A,W
-029A:  SUBWF  59,W
-029C:  BNZ   02A0
+02E4:  MOVF   5A,W
+02E6:  SUBWF  59,W
+02E8:  BNZ   02EC
 ....................         return; 
-029E:  BRA    02D8
+02EA:  BRA    032C
 ....................     /* Add received byte to the data_length variable. 
 ....................        The bytes arrive in Big Endian order. */ 
 ....................     data.data_buffer[count] = uart_bgetc(); 
-02A0:  CLRF   03
-02A2:  MOVF   xC3,W
-02A4:  ADDLW  9D
-02A6:  MOVWF  01
-02A8:  MOVLW  00
-02AA:  ADDWFC 03,F
-02AC:  MOVFF  01,C6
-02B0:  MOVFF  03,C7
-02B4:  RCALL  01FE
-02B6:  MOVFF  C7,FEA
-02BA:  MOVFF  C6,FE9
-02BE:  MOVFF  01,FEF
+02EC:  CLRF   03
+02EE:  MOVF   xC3,W
+02F0:  ADDLW  9D
+02F2:  MOVWF  01
+02F4:  MOVLW  00
+02F6:  ADDWFC 03,F
+02F8:  MOVFF  01,C6
+02FC:  MOVFF  03,C7
+0300:  RCALL  0224
+0302:  MOVFF  C7,FEA
+0306:  MOVFF  C6,FE9
+030A:  MOVFF  01,FEF
 ....................     count++; 
-02C2:  INCF   xC3,F
+030E:  INCF   xC3,F
+....................     set_timer1(TIMER1_REFRESH); 
+0310:  MOVLW  D8
+0312:  MOVWF  FCF
+0314:  MOVLW  F0
+0316:  MOVWF  FCE
 ....................     /* State transition rule */ 
 ....................     if (count == data.data_length) 
-02C4:  MOVF   xBF,W
-02C6:  SUBWF  xC3,W
-02C8:  BNZ   02D8
+0318:  MOVF   xBF,W
+031A:  SUBWF  xC3,W
+031C:  BNZ   032C
 ....................     { 
 ....................         count = 0;  // Reset counter 
-02CA:  CLRF   xC3
+031E:  CLRF   xC3
 ....................         parse_next = parse_crc; 
-02CC:  MOVLW  03
-02CE:  MOVWF  03
-02D0:  MOVLW  16
-02D2:  MOVWF  xC1
-02D4:  MOVFF  03,C2
+0320:  MOVLW  03
+0322:  MOVWF  03
+0324:  MOVLW  6A
+0326:  MOVWF  xC1
+0328:  MOVFF  03,C2
 ....................     } 
-02D8:  RETURN 0
+032C:  RETURN 0
 .................... } 
-....................  
+.................... /** 
+....................  * Function receive and check CRC of a package 
+....................  */ 
 .................... void parse_crc() 
 .................... { 
 ....................     //* If there is no data available, return */ 
 ....................     if (!uart_bkbhit) 
 *
-0316:  MOVF   5A,W
-0318:  SUBWF  59,W
-031A:  BNZ   031E
+036A:  MOVF   5A,W
+036C:  SUBWF  59,W
+036E:  BNZ   0372
 ....................         return; 
-031C:  BRA    0344
+0370:  BRA    03A0
 ....................      
 ....................     data.crc = uart_bgetc(); 
-031E:  RCALL  01FE
-0320:  MOVFF  01,C0
+0372:  RCALL  0224
+0374:  MOVFF  01,C0
+....................     set_timer1(TIMER1_REFRESH); 
+0378:  MOVLW  D8
+037A:  MOVWF  FCF
+037C:  MOVLW  F0
+037E:  MOVWF  FCE
 ....................     // Check CRC 
 ....................     if (!crc_check()) 
-0324:  BRA    02DA
-0326:  MOVF   01,F
-0328:  BNZ   0338
+0380:  BRA    032E
+0382:  MOVF   01,F
+0384:  BNZ   0394
 ....................     { 
 ....................         parse_next = wait_for_start; 
-032A:  MOVLW  02
-032C:  MOVWF  03
-032E:  MOVLW  1E
-0330:  MOVWF  xC1
-0332:  MOVFF  03,C2
+0386:  MOVLW  02
+0388:  MOVWF  03
+038A:  MOVLW  44
+038C:  MOVWF  xC1
+038E:  MOVFF  03,C2
+....................         /* Request for retransmission should be added here if it's needed */ 
+....................         /* printf(uart_bputc, "CRC failed!\r\n");                        */ 
 ....................         return; 
-0336:  BRA    0344
+0392:  BRA    03A0
 ....................     } 
 ....................     parse_next = parse_end; 
-0338:  MOVLW  03
-033A:  MOVWF  03
-033C:  MOVLW  46
-033E:  MOVWF  xC1
-0340:  MOVFF  03,C2
-0344:  RETURN 0
+0394:  MOVLW  03
+0396:  MOVWF  03
+0398:  MOVLW  A2
+039A:  MOVWF  xC1
+039C:  MOVFF  03,C2
+03A0:  RETURN 0
 .................... } 
-....................  
+.................... /** 
+....................  * Function receive and check the last one character in a package 
+....................  */ 
 .................... void parse_end() 
 .................... { 
 ....................     //* If there is no data available, return */ 
 ....................     if (!uart_bkbhit) 
-0346:  MOVF   5A,W
-0348:  SUBWF  59,W
-034A:  BNZ   034E
+03A2:  MOVF   5A,W
+03A4:  SUBWF  59,W
+03A6:  BNZ   03AA
 ....................         return; 
-034C:  BRA    037A
+03A8:  BRA    03D8
+....................      
+....................     disable_interrupts(int_timer1); 
+03AA:  BCF    F9D.0
 ....................     // If last byte isn't stop character, something goes wrong in transmission 
 ....................     // and package will be rejected 
 ....................     if (uart_bgetc() != '$') 
-034E:  RCALL  01FE
-0350:  MOVF   01,W
-0352:  SUBLW  24
-0354:  BZ    0364
+03AC:  RCALL  0224
+03AE:  MOVF   01,W
+03B0:  SUBLW  24
+03B2:  BZ    03C2
 ....................     { 
 ....................         parse_next = wait_for_start; 
-0356:  MOVLW  02
-0358:  MOVWF  03
-035A:  MOVLW  1E
-035C:  MOVWF  xC1
-035E:  MOVFF  03,C2
+03B4:  MOVLW  02
+03B6:  MOVWF  03
+03B8:  MOVLW  44
+03BA:  MOVWF  xC1
+03BC:  MOVFF  03,C2
+....................         /* Request for retransmission should be added here if it's needed */ 
+....................         /* printf(uart_bputc, "STOP character reception failed!\r\n");    */ 
 ....................         return; 
-0362:  BRA    037A
+03C0:  BRA    03D8
 ....................     } 
 ....................     parse_next = wait_for_start; 
-0364:  MOVLW  02
-0366:  MOVWF  03
-0368:  MOVLW  1E
-036A:  MOVWF  xC1
-036C:  MOVFF  03,C2
+03C2:  MOVLW  02
+03C4:  MOVWF  03
+03C6:  MOVLW  44
+03C8:  MOVWF  xC1
+03CA:  MOVFF  03,C2
 ....................     // Handle data 
-....................     printf(uart_bputc, "Message receive done."); 
-0370:  MOVLW  44
-0372:  MOVWF  FF6
-0374:  MOVLW  01
-0376:  MOVWF  FF7
-0378:  RCALL  01DE
-037A:  RETURN 0
+....................     printf(uart_bputc, "Message receive done.\r\n"); 
+03CE:  MOVLW  64
+03D0:  MOVWF  FF6
+03D2:  MOVLW  01
+03D4:  MOVWF  FF7
+03D6:  RCALL  0204
+03D8:  RETURN 0
 .................... } 
-....................  
+.................... /** 
+....................  * Calculate and check CRC8 for received message 
+....................  * @return TRUE if CRC check is valid or FALSE if CRC check is failed 
+....................  */ 
 .................... short crc_check() 
 *
-02DA:  CLRF   xC7
+032E:  CLRF   xC7
 .................... { 
 ....................     int i; 
 ....................     int crc8 = 0; 
 ....................     crc8 = crc8 ^ data.dev_address ^ data.ID ^ data.data_length; 
-02DC:  MOVF   xC7,W
-02DE:  XORWF  xBD,W
-02E0:  XORWF  xBE,W
-02E2:  XORWF  xBF,W
-02E4:  MOVWF  xC7
+0330:  MOVF   xC7,W
+0332:  XORWF  xBD,W
+0334:  XORWF  xBE,W
+0336:  XORWF  xBF,W
+0338:  MOVWF  xC7
 ....................     for(i=0; i<data.data_length; i++) 
-02E6:  CLRF   xC6
-02E8:  MOVF   xBF,W
-02EA:  SUBWF  xC6,W
-02EC:  BC    0304
+033A:  CLRF   xC6
+033C:  MOVF   xBF,W
+033E:  SUBWF  xC6,W
+0340:  BC    0358
 ....................         crc8 = crc8 ^ data.data_buffer[i]; 
-02EE:  CLRF   03
-02F0:  MOVF   xC6,W
-02F2:  ADDLW  9D
-02F4:  MOVWF  FE9
-02F6:  MOVLW  00
-02F8:  ADDWFC 03,W
-02FA:  MOVWF  FEA
-02FC:  MOVF   FEF,W
-02FE:  XORWF  xC7,F
-0300:  INCF   xC6,F
-0302:  BRA    02E8
+0342:  CLRF   03
+0344:  MOVF   xC6,W
+0346:  ADDLW  9D
+0348:  MOVWF  FE9
+034A:  MOVLW  00
+034C:  ADDWFC 03,W
+034E:  MOVWF  FEA
+0350:  MOVF   FEF,W
+0352:  XORWF  xC7,F
+0354:  INCF   xC6,F
+0356:  BRA    033C
 ....................      
 ....................     return crc8 == data.crc; 
-0304:  MOVF   xC0,W
-0306:  SUBWF  xC7,W
-0308:  BZ    030E
-030A:  MOVLW  00
-030C:  BRA    0310
-030E:  MOVLW  01
-0310:  MOVWF  01
-0312:  GOTO   0326 (RETURN)
+0358:  MOVF   xC0,W
+035A:  SUBWF  xC7,W
+035C:  BZ    0362
+035E:  MOVLW  00
+0360:  BRA    0364
+0362:  MOVLW  01
+0364:  MOVWF  01
+0366:  GOTO   0382 (RETURN)
 .................... } 
 ....................  
 ....................  
 ....................  
 .................... void main() 
 *
-0388:  CLRF   FF8
-038A:  BCF    FD0.7
-038C:  BSF    07.7
-038E:  BCF    F94.0
-0390:  BCF    F8B.0
-0392:  BSF    FAA.3
-0394:  MOVLW  11
-0396:  MOVWF  FAF
-0398:  MOVLW  04
-039A:  MOVWF  FB0
-039C:  MOVLW  A6
-039E:  MOVWF  FAC
-03A0:  MOVLW  90
-03A2:  MOVWF  FAB
-03A4:  MOVLW  02
-03A6:  MOVWF  03
-03A8:  MOVLW  1E
-03AA:  MOVWF  xC1
-03AC:  MOVFF  03,C2
-03B0:  CLRF   xC3
-03B2:  CLRF   xC5
-03B4:  CLRF   xC4
-03B6:  BCF    FB9.0
-03B8:  BCF    FC1.6
-03BA:  BCF    FC1.7
-03BC:  MOVLW  00
-03BE:  MOVWF  FB8
-03C0:  BRA    03C8
-03C2:  DATA A8,40
-03C4:  DATA 19,00
-03C6:  DATA 00,00
-03C8:  MOVLW  00
-03CA:  MOVWF  FF8
-03CC:  MOVLW  03
-03CE:  MOVWF  FF7
-03D0:  MOVLW  C2
-03D2:  MOVWF  FF6
-03D4:  TBLRD*+
-03D6:  MOVF   FF5,W
-03D8:  MOVWF  00
-03DA:  XORLW  00
-03DC:  BZ    0404
-03DE:  TBLRD*+
-03E0:  MOVF   FF5,W
-03E2:  MOVWF  01
-03E4:  BTFSC  FE8.7
-03E6:  BRA    03F2
-03E8:  ANDLW  0F
-03EA:  MOVWF  FEA
-03EC:  TBLRD*+
-03EE:  MOVFF  FF5,FE9
-03F2:  BTFSC  01.6
-03F4:  TBLRD*+
-03F6:  BTFSS  01.6
-03F8:  TBLRD*+
-03FA:  MOVFF  FF5,FEE
-03FE:  DCFSNZ 00,F
-0400:  BRA    03D4
-0402:  BRA    03F6
-0404:  CLRF   FF8
+03E6:  CLRF   FF8
+03E8:  BCF    FD0.7
+03EA:  BSF    07.7
+03EC:  BCF    F94.0
+03EE:  BCF    F8B.0
+03F0:  BSF    FAA.3
+03F2:  MOVLW  11
+03F4:  MOVWF  FAF
+03F6:  MOVLW  04
+03F8:  MOVWF  FB0
+03FA:  MOVLW  A6
+03FC:  MOVWF  FAC
+03FE:  MOVLW  90
+0400:  MOVWF  FAB
+0402:  MOVLW  02
+0404:  MOVWF  03
+0406:  MOVLW  44
+0408:  MOVWF  xC1
+040A:  MOVFF  03,C2
+040E:  CLRF   xC3
+0410:  CLRF   xC5
+0412:  CLRF   xC4
+0414:  BCF    FB9.0
+0416:  BCF    FC1.6
+0418:  BCF    FC1.7
+041A:  MOVLW  00
+041C:  MOVWF  FB8
+041E:  BRA    0426
+0420:  DATA A8,40
+0422:  DATA 19,00
+0424:  DATA 00,00
+0426:  MOVLW  00
+0428:  MOVWF  FF8
+042A:  MOVLW  04
+042C:  MOVWF  FF7
+042E:  MOVLW  20
+0430:  MOVWF  FF6
+0432:  TBLRD*+
+0434:  MOVF   FF5,W
+0436:  MOVWF  00
+0438:  XORLW  00
+043A:  BZ    0462
+043C:  TBLRD*+
+043E:  MOVF   FF5,W
+0440:  MOVWF  01
+0442:  BTFSC  FE8.7
+0444:  BRA    0450
+0446:  ANDLW  0F
+0448:  MOVWF  FEA
+044A:  TBLRD*+
+044C:  MOVFF  FF5,FE9
+0450:  BTFSC  01.6
+0452:  TBLRD*+
+0454:  BTFSS  01.6
+0456:  TBLRD*+
+0458:  MOVFF  FF5,FEE
+045C:  DCFSNZ 00,F
+045E:  BRA    0432
+0460:  BRA    0454
+0462:  CLRF   FF8
 .................... { 
 ....................     uart_init(2, 120);  
-0406:  MOVLW  02
-0408:  MOVWF  xC6
-040A:  MOVLW  78
-040C:  MOVWF  xC7
-040E:  BRA    016A
+0464:  MOVLW  02
+0466:  MOVWF  xC6
+0468:  MOVLW  78
+046A:  MOVWF  xC7
+046C:  BRA    018C
 ....................     enable_interrupts(GLOBAL); 
-0410:  MOVLW  C0
-0412:  IORWF  FF2,F
+046E:  MOVLW  C0
+0470:  IORWF  FF2,F
 ....................      
 ....................     printf(uart_bputc, "\r\n\Running...\r\n"); 
-0414:  MOVLW  5A
-0416:  MOVWF  FF6
-0418:  MOVLW  01
-041A:  MOVWF  FF7
-041C:  RCALL  01DE
+0472:  MOVLW  7C
+0474:  MOVWF  FF6
+0476:  MOVLW  01
+0478:  MOVWF  FF7
+047A:  RCALL  0204
 ....................      
 ....................     while (1) 
 ....................     { 
 ....................         //delay_ms(5000); 
 ....................         //printf("\r\nBuffered data => \r\n"); 
 ....................         while (uart_bkbhit) 
-041E:  MOVF   5A,W
-0420:  SUBWF  59,W
-0422:  BZ    0428
+047C:  MOVF   5A,W
+047E:  SUBWF  59,W
+0480:  BZ    0486
 ....................             parse_uart_data(); 
-0424:  BRA    037C
-0426:  BRA    041E
-0428:  BRA    041E
+0482:  BRA    03DA
+0484:  BRA    047C
+0486:  BRA    047C
 ....................     } 
 .................... } 
 ....................  
-042A:  SLEEP 
+0488:  SLEEP 
 
 Configuration Fuses:
    Word  1: 0600   H4 NOFCMEN NOIESO

@@ -10,6 +10,7 @@
 
 void serial_rcv_isr(void);
 void serial_td_isr(void);
+void timer1_overflow_isr(void);
 BYTE uart_bgetc(void);
 void uart_bputc(BYTE);
 void uart_init(unsigned int, BYTE);
@@ -21,7 +22,7 @@ void parse_id(void);        // Reads the 3 char identifier, stores it in data_id
 void parse_length(void);    // Reads [LENGTH] field, stores it in data_length
 void parse_data(void);      // Reads the data into data_buffer[]
 void parse_crc(void);       // Reads the crc checksum (and checks the data)
-void parse_end(void);       // End of data packet (#) handling.. start all over.
+void parse_end(void);       // End of data packet ($) handling.. start all over.
 short crc_check(void);      
 
 #endif	/* UART_H */
