@@ -27,33 +27,42 @@
 019-05A in
 05B-09C out
 09D-0C0 data
-0C1-0C2 parse_next
-0C3     count
-0C4-0C5 @sprintf_string
-0C6     uart_init.baudrate
-0C6     crc_check.i
-0C6     wait_for_start.@SCRATCH1
-0C6     parse_data.@SCRATCH1
-0C6     parse_end.@SCRATCH1
-0C6     @PSTRINGC_688.@SCRATCH1
-0C7     crc_check.crc8
-0C7     uart_init.dev_id
-0C7     parse_data.@SCRATCH2
-0C7     @PSTRINGC_688.@SCRATCH2
-0C8     uart_bputc.c
-0C8     uart_bgetc.c
-0C8-0C9 uart_init.divisor
-0C8     crc_check.@SCRATCH1
-0C9.0   uart_bputc.restart
-0C9     uart_bgetc.@SCRATCH1
-0CA     uart_bputc.ni
-0CB     uart_bputc.@SCRATCH1
-0CC     uart_bputc.@SCRATCH2
-0CD     serial_rcv_isr.t
-0CD     serial_td_isr.@SCRATCH1
-0CE     @PUTCHAR_BIU_1.P1
-0CE     serial_rcv_isr.@SCRATCH1
-0CF     serial_rcv_isr.@SCRATCH2
+0C1.0   NEW_MESSAGE_RECEIVE
+0C2-0C3 parse_next
+0C4     count
+0C5-0C6 @sprintf_string
+0C7-0C8 cmd_callback
+0C9-0CE cmd_hdlrs
+0CF     protocol_cmd_parse_request.msg_ID
+0CF     uart_init.baudrate
+0D0     uart_init.dev_id
+0D0     protocol_cmd_parse_request.i
+0D1-0D2 uart_init.divisor
+0D1     protocol_cmd_parse_request.cmd_hdlrs_count
+0D2     protocol_cmd_parse_request.@SCRATCH1
+0D3     protocol_cmd_parse_request.@SCRATCH2
+0D4     crc_check.i
+0D4     wait_for_start.@SCRATCH1
+0D4     parse_data.@SCRATCH1
+0D4     parse_end.@SCRATCH1
+0D4     @PSTRINGC_688.@SCRATCH1
+0D4     protocol_cmd_parse_request.@SCRATCH3
+0D5     crc_check.crc8
+0D5     parse_data.@SCRATCH2
+0D5     @PSTRINGC_688.@SCRATCH2
+0D6     uart_bgetc.c
+0D6     uart_bputc.c
+0D6     crc_check.@SCRATCH1
+0D7.0   uart_bputc.restart
+0D7     uart_bgetc.@SCRATCH1
+0D8     uart_bputc.ni
+0D9     uart_bputc.@SCRATCH1
+0DA     uart_bputc.@SCRATCH2
+0DB     serial_rcv_isr.t
+0DB     serial_td_isr.@SCRATCH1
+0DC     @PUTCHAR_BIU_1.P1
+0DC     serial_rcv_isr.@SCRATCH1
+0DD     serial_rcv_isr.@SCRATCH2
 F6C.2   FLTA
 F6C.6   FLTB
 FAA     BAUDCTL
@@ -65,16 +74,16 @@ FAC     TXSTA
 FAC.2   BRGH
 FAC.4   SYNC
 FAF-FB0 SPBRG
-FBB     CCP_2
 FBB     CCP_2_LOW
+FBB     CCP_2
 FBC     CCP_2_HIGH
-FBE     CCP_1
 FBE     CCP_1_LOW
+FBE     CCP_1
 FBF     CCP_1_HIGH
-FE1-FE2 @WRITE_PACKED_MEMORY.P1
-FE1-FE2 @READ_PACKED_MEMORY.P2
-FE9-FEA @READ_PROGRAM_MEMORY.P1
-FE9-FEA @READ_PACKED_MEMORY.P2
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
 FE9-FEA @WRITE_PROGRAM_MEMORY.P3
 FE9-FEA @WRITE_PACKED_MEMORY.P4
 FF6-FF8 @READ_PROGRAM_MEMORY.P1
@@ -86,39 +95,46 @@ ROM Allocation:
 000116  serial_td_isr
 000142  timer1_overflow_isr
 000156  @GOTOPTR
-000164  @const727.call
-00017C  @const737.call
-00018C  uart_init
-0001CC  uart_bputc
-000204  @PSTRINGC_688
-000224  uart_bgetc
-000244  wait_for_start
-000278  wait_for_adr
-00029C  parse_id
-0002C0  parse_length
-0002E4  parse_data
-00032E  crc_check
-00036A  parse_crc
-0003A2  parse_end
-0003DA  parse_uart_data
-0003E6  MAIN
-0003E6  @cinit1
-00041E  @cinit2
+000164  @const728.call
+00017C  @const753.call
+000196  @const754.call
+0001B0  @const758.call
+0001C0  uart_init
+000200  uart_bputc
+000238  @PSTRINGC_688
+000258  uart_bgetc
+000278  wait_for_start
+0002AC  wait_for_adr
+0002D0  parse_id
+0002F4  parse_length
+000318  parse_data
+000362  crc_check
+00039E  parse_crc
+0003D6  parse_end
+000410  set_address_hdlr
+00041C  drv_enable_hdlr
+000428  parse_uart_data
+000434  protocol_cmd_parse_request
+0004D6  MAIN
+0004D6  @cinit1
+000510  @cinit2
 
 Project Directory:
     F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\
 
 Project Files:
-    main.c                                                  [22-Nov-15 16:35  CRC=EED36053]
+    main.c                                                  [25-Nov-15 00:49  CRC=DF1550C2]
     main.h                                                  [19-Nov-15 23:26  CRC=004C7DDD]
     C:\Program Files\PICC\devices\18F4431.h                 [17-Apr-15 14:50  CRC=717083EF]
-    uart.h                                                  [23-Nov-15 00:23  CRC=8893D26F]
-    uart.c                                                  [23-Nov-15 00:39  CRC=B50364AB]
+    uart.h                                                  [23-Nov-15 00:43  CRC=8893D26F]
+    uart.c                                                  [25-Nov-15 00:48  CRC=E4FF88B8]
+    protocol.h                                              [25-Nov-15 00:36  CRC=2CAA79EC]
+    protocol.c                                              [25-Nov-15 01:27  CRC=8AF3D864]
 
-Source signature=532AFDE4
+Source signature=00F7D869
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=0292
+Hex file CRC=D45C
 
 Units:
     main (main)

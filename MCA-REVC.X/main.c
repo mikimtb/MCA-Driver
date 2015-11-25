@@ -8,6 +8,8 @@
 #include "main.h"
 #include "uart.h"
 #include "uart.c"
+#include "protocol.h"
+#include "protocol.c"
 
 
 void main()
@@ -23,6 +25,11 @@ void main()
         //printf("\r\nBuffered data => \r\n");
         while (uart_bkbhit)
             parse_uart_data();
+        if (NEW_MESSAGE_RECEIVE)
+        {
+            protocol_cmd_parse_request(data.ID);
+            NEW_MESSAGE_RECEIVE = FALSE;
+        }
     }
 }
 

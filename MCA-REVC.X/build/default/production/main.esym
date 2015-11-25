@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.045""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""23-Nov-15""
-D G "__TIME__" 0 0 ""00:39:05""
+D G "__DATE__" 0 0 ""25-Nov-15""
+D G "__TIME__" 0 0 ""01:27:39""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4431" 0 0 "1" "* File:   main.c"
 C G "" 0 1 1 "*"
@@ -1311,15 +1311,16 @@ V G "in" 4 50 "t_buffer" `716
 V G "out" 4 51 "t_buffer" `717 
 C L "*t_fptr" 4 23 1 "FUNCTION"
 V G "data" 4 53 "t_package" `718 
+V G "NEW_MESSAGE_RECEIVE" 4 54 "int1" `719 
 C L "*t_fptr" 4 23 1 "FUNCTION"
-V G "parse_next" 4 56 "t_fptr" `719 
+V G "parse_next" 4 56 "t_fptr" `720 
 C L "*t_fptr" 4 23 1 "FUNCTION"
-V G "count" 4 57 "int8" `720 
+V G "count" 4 57 "int8" `721 
 C L "*t_fptr" 4 23 2 "FUNCTION"
 C L "*t_fptr" 4 59 1 "*"
 F N "serial_rcv_isr" 4 63 ""
 F G "serial_rcv_isr" 4 64 "void()" `684 
-V L "t" 4 65 "int8" `721 
+V L "t" 4 65 "int8" `722 
 C L "serial_rcv_isr" 4 59 1 "FUNCTION"
 C L "serial_td_isr" 4 73 1 "*"
 F N "serial_td_isr" 4 77 ""
@@ -1332,22 +1333,22 @@ C L "uart_bgetc" 4 99 1 "*"
 C L "uart_bgetc" 4 99 1 "*"
 F N "uart_bgetc" 4 103 ""
 F G "uart_bgetc" 4 104 "int8()" `687 
-V L "c" 4 105 "int8" `722 
+V L "c" 4 105 "int8" `723 
 C L "uart_bputc" 4 111 1 "*"
 C L "uart_bputc" 4 111 1 "*"
 F N "uart_bputc" 4 115 ""
-V L "c" 4 115 "int8" `724 
+V L "c" 4 115 "int8" `725 
 F G "uart_bputc" 4 116 "void(int8 c)" `688 
-V L "restart" 4 117 "int1" `723 
-V L "ni" 4 118 "int8" `724 
+V L "restart" 4 117 "int1" `724 
+V L "ni" 4 118 "int8" `725 
 C L "uart_init" 4 128 1 "*"
 C L "uart_init" 4 128 1 "*"
 C L "uart_init" 4 128 1 "*"
 F N "uart_init" 4 133 ""
 V L "baudrate" 4 133 "int8" `691 
-V L "dev_id" 4 133 "int8" `727 
+V L "dev_id" 4 133 "int8" `728 
 F G "uart_init" 4 134 "void(int8 baudrate,int8 dev_id)" `690 
-V L "divisor" 4 135 "int16" `725 
+V L "divisor" 4 135 "int16" `726 
 C L "uart_init" 4 128 1 "FUNCTION"
 C L "uart_init" 4 128 1 "FUNCTION"
 C L "uart_init" 4 128 1 "FUNCTION"
@@ -1389,15 +1390,57 @@ F G "parse_end" 4 287 "void()" `700  "* If there is no data available, return */
 C L "parse_end" 4 283 2 "FUNCTION"
 C L "parse_end" 4 283 2 "FUNCTION"
 C L "parse_end" 4 283 1 "FUNCTION"
-C L "crc_check" 4 306 1 "*"
-C L "crc_check" 4 306 1 "*"
-F N "crc_check" 4 310 ""
-F G "crc_check" 4 311 "int8()" `701 
-V L "i" 4 312 "int8" `732 
-V L "crc8" 4 313 "int8" `733 
-F N "MAIN" 0 13 ""
-F G "MAIN" 0 14 "void()" `734 
-C L "MAIN" 0 22 2 "FUNCTION"
+C L "crc_check" 4 307 1 "*"
+C L "crc_check" 4 307 1 "*"
+F N "crc_check" 4 311 ""
+F G "crc_check" 4 312 "int8()" `701 
+V L "i" 4 313 "int8" `733 
+V L "crc8" 4 314 "int8" `734 
+D G "PROTOCOL_H" 5 7 ""
+C L "protocol_cmd_parse_request" 5 2 1 "FUNCTION"
+F N "protocol_cmd_parse_request" 5 10 ""
+V L "??65535" 5 10 "int8" `736 
+f G "protocol_cmd_parse_request" 5 10 "int8(int8 )" `735 
+F N "set_address_hdlr" 5 11 ""
+f G "set_address_hdlr" 5 11 "void()" `737 
+F N "drv_enable_hdlr" 5 12 ""
+f G "drv_enable_hdlr" 5 12 "void()" `738  "PROTOCOL_H *"
+C L "drv_enable_hdlr" 6 2 3 "FUNCTION"
+C L "drv_enable_hdlr" 5 2 3 "FUNCTION"
+C L "drv_enable_hdlr" 3 1 1 "*"
+C L "drv_enable_hdlr" 3 1 1 "*"
+C L "drv_enable_hdlr" 3 1 2 "*"
+C L "drv_enable_hdlr" 6 11 1 "FUNCTION"
+F N "*t_cmdHdlr" 6 12 ""
+T G "*t_cmdHdlr" 6 12 "void()" `739 
+E G "CMD_SET_ADDRESS" 6 17 "0" `742 
+E G "CMD_DRIVER_ENABLE" 6 18 "1" `743 
+T G "e_cmdID" 6 18 "" `744 
+C L "*t_cmdHdlr" 6 11 1 "FUNCTION"
+C L "*t_cmdHdlr" 6 11 1 "FUNCTION"
+T G "t_cmd_info" 6 24 "{int1 cmd_id,t_cmdHdlr cmd_hdlr}" `748  "Variables"
+V G "cmd_callback" 6 27 "t_cmdHdlr" `749 
+V G "cmd_hdlrs" 6 29 "t_cmd_info[1]" `750 
+C L "*t_cmdHdlr" 6 11 1 "FUNCTION"
+F N "protocol_cmd_parse_request" 6 36 ""
+V L "msg_ID" 6 36 "int8" `752 
+F G "protocol_cmd_parse_request" 6 37 "int8(int8 msg_ID)" `735 
+V L "i" 6 38 "int8" `751 
+C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
+V L "cmd_hdlrs_count" 6 40 "int8" `752 
+C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
+C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
+C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
+C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
+C L "set_address_hdlr" 6 54 1 "*"
+F N "set_address_hdlr" 6 57 ""
+F G "set_address_hdlr" 6 58 "void()" `737 
+C L "drv_enable_hdlr" 6 61 1 "*"
+F N "drv_enable_hdlr" 6 64 ""
+F G "drv_enable_hdlr" 6 65 "void()" `738 
+F N "MAIN" 0 15 ""
+F G "MAIN" 0 16 "void()" `755 
+C L "MAIN" 0 24 2 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

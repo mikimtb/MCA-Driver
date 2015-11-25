@@ -1,5 +1,5 @@
 [PROJECT]
-Target=build\default\production\main.hex
+Target=build\default\debug\main.hex
 Processor_Text=PIC18F4431
 CCSVersion=5.045
 Compiler=PCH
@@ -8,7 +8,7 @@ FileList=main.c
 [build\default\production\main.c]
 Type=4
 [mru-list]
-1=build\default\production\main.c
+1=build\default\debug\main.c
 [build\default\debug\main.c]
 Type=4
 [Units]

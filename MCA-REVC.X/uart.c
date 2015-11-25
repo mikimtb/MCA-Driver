@@ -51,7 +51,7 @@ t_buffer in = {{0}, 0, 0};
 t_buffer out = {{0}, 0, 0};
 //Message parser
 t_package data = {{0}, 0, 0, 0};
-
+short NEW_MESSAGE_RECEIVE = FALSE;
 //Pointer to a function that takes no parameters and returns nothing.
 t_fptr parse_next = wait_for_start;          // Initialize the pointer to point to first state
 int count = 0;                               // Variable used in parse_data function
@@ -302,6 +302,7 @@ void parse_end()
     parse_next = wait_for_start;
     // Handle data
     printf(uart_bputc, "Message receive done.\r\n");
+    NEW_MESSAGE_RECEIVE = TRUE;
 }
 /**
  * Calculate and check CRC8 for received message

@@ -1,31 +1,54 @@
 ÀÄMCA-REVC
-   ÃÄMAIN  0/178  Ram=0
+   ÃÄMAIN  0/202  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄuart_init  0/64  Ram=4
-   ³  ÃÄ@PSTRINGC_687  0/32  Ram=2
-   ³  ³  ÀÄuart_bputc  0/54  Ram=5
-   ³  ÀÄparse_uart_data  0/12  Ram=0
+   ³  ÃÄ@PSTRINGC_688  0/32  Ram=2
+   ³  ³  ÀÄuart_bputc  0/56  Ram=5
+   ³  ÃÄparse_uart_data  0/12  Ram=0
+   ³  ³  ÃÄwait_for_start  0/52  Ram=1
+   ³  ³  ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³  ³  ÃÄwait_for_adr  0/36  Ram=0
+   ³  ³  ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³  ³  ÃÄparse_id  0/36  Ram=0
+   ³  ³  ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³  ³  ÃÄparse_length  0/36  Ram=0
+   ³  ³  ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³  ³  ÃÄparse_data  0/74  Ram=2
+   ³  ³  ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³  ³  ÃÄparse_crc  0/56  Ram=0
+   ³  ³  ³  ÃÄuart_bgetc  0/32  Ram=2
+   ³  ³  ³  ÀÄcrc_check  0/60  Ram=3
+   ³  ³  ÃÄparse_end  0/58  Ram=1
+   ³  ³  ³  ÃÄuart_bgetc  0/32  Ram=2
+   ³  ³  ³  ÀÄ@PSTRINGC_688  0/32  Ram=2
+   ³  ³  ³     ÀÄ*
+   ³  ³  ÃÄset_address_hdlr  0/12  Ram=0
+   ³  ³  ³  ÀÄ@PSTRINGC_688  0/32  Ram=2
+   ³  ³  ³     ÀÄ*
+   ³  ³  ÀÄdrv_enable_hdlr  0/12  Ram=0
+   ³  ³     ÀÄ@PSTRINGC_688  0/32  Ram=2
+   ³  ³        ÀÄ*
+   ³  ÀÄprotocol_cmd_parse_request  0/118  Ram=6
    ³     ÃÄwait_for_start  0/52  Ram=1
-   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ³  ÀÄ*
    ³     ÃÄwait_for_adr  0/36  Ram=0
-   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ³  ÀÄ*
    ³     ÃÄparse_id  0/36  Ram=0
-   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ³  ÀÄ*
    ³     ÃÄparse_length  0/36  Ram=0
-   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ³  ÀÄ*
    ³     ÃÄparse_data  0/74  Ram=2
-   ³     ³  ÀÄuart_bgetc  0/32  Ram=2
+   ³     ³  ÀÄ*
    ³     ÃÄparse_crc  0/56  Ram=0
-   ³     ³  ÃÄuart_bgetc  0/32  Ram=2
-   ³     ³  ÀÄcrc_check  0/60  Ram=3
-   ³     ÀÄparse_end  0/70  Ram=1
-   ³        ÃÄuart_bgetc  0/32  Ram=2
-   ³        ÀÄ@PSTRINGC_687  0/32  Ram=2
-   ³           ÀÄ*
+   ³     ³  ÀÄ*
+   ³     ÃÄparse_end  0/58  Ram=1
+   ³     ³  ÀÄ*
+   ³     ÃÄset_address_hdlr  0/12  Ram=0
+   ³     ³  ÀÄ*
+   ³     ÀÄdrv_enable_hdlr  0/12  Ram=0
+   ³        ÀÄ*
    ÃÄserial_rcv_isr  0/50  Ram=3
    ÃÄserial_td_isr  0/44  Ram=1
    ³  ÀÄ@PUTCHAR_BIU_1  0/30  Ram=1
-   ÃÄtimer1_overflow_isr  0/32  Ram=0
-   ³  ÀÄ@PSTRINGC_687  0/32  Ram=2
-   ³     ÀÄ*
+   ÃÄtimer1_overflow_isr  0/20  Ram=0
    ÀÄ@GOTOPTR  0/14  Ram=0

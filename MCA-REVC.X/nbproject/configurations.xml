@@ -80,7 +80,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -138,6 +137,10 @@
         <property key="output-flags" value=""/>
         <property key="preprocessor-macros" value=""/>
       </ccscompiler>
+      <item path="protocol.c" ex="true" overriding="false">
+        <ccscompiler>
+        </ccscompiler>
+      </item>
       <item path="uart.c" ex="true" overriding="false">
         <ccscompiler>
         </ccscompiler>
