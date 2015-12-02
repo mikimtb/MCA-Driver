@@ -13,8 +13,10 @@ typedef void (*t_cmdHdlr)(void);
 
 typedef enum
 {
-    CMD_SET_ADDRESS = 0,
-    CMD_DRIVER_ENABLE = 1
+    CMD_WAKE_UP = 0,
+    CMD_GET_FIRMWARE_VERSION,
+    CMD_SET_ADDRESS,
+    CMD_SET_DRV_ENABLE
 } e_cmdID;
 
 typedef struct cmd_info
@@ -26,8 +28,10 @@ typedef struct cmd_info
 // Variables
 t_cmd_info cmd_hdlrs[] = 
 {
+    {CMD_WAKE_UP, wake_up_hdlr},
+    {CMD_GET_FIRMWARE_VERSION, get_firmware_version_hdlr},
     {CMD_SET_ADDRESS, set_address_hdlr},
-    {CMD_DRIVER_ENABLE, drv_enable_hdlr}
+    {CMD_SET_DRV_ENABLE, set_drv_enable_hdlr}
 };
 
 // Functions
@@ -49,16 +53,30 @@ int protocol_cmd_parse_request(BYTE msg_ID)
     return 0;
 }
 /**
- * Function set new address of a device
+ * Return driver presentation on communication bus
+ */
+void wake_up_hdlr()
+{
+    printf(uart_bputc, "Wakeup handler called.\r\n");
+}
+/**
+ * Return firmware version
+ */
+void get_firmware_version_hdlr()
+{
+    printf(uart_bputc, "Firmware version handler called.\r\n");
+}
+/**
+ * Set new address of a device
  */
 void set_address_hdlr()
 {
     printf(uart_bputc, "Address handler called.\r\n");
 }
 /**
- * Function enable IR2110 H bridge drivers output
+ * Enable IR2110 H bridge drivers output
  */
-void drv_enable_hdlr()
+void set_drv_enable_hdlr()
 {
     printf(uart_bputc, "Enable handler called.\r\n");
 }

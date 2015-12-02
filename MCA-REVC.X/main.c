@@ -17,7 +17,7 @@ void main()
     uart_init(2, 120); 
     enable_interrupts(GLOBAL);
     
-    printf(uart_bputc, "\r\n\Running...\r\n");
+    //printf(uart_bputc, "\r\n\Running...\r\n");
     
     while (1)
     {
@@ -30,6 +30,9 @@ void main()
             protocol_cmd_parse_request(data.ID);
             NEW_MESSAGE_RECEIVE = FALSE;
         }
+        
+        
+        delay_ms(10);
     }
 }
 

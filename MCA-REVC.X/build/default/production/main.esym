@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.045""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""25-Nov-15""
-D G "__TIME__" 0 0 ""01:27:39""
+D G "__DATE__" 0 0 ""03-Dec-15""
+D G "__TIME__" 0 0 ""00:31:32""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4431" 0 0 "1" "* File:   main.c"
 C G "" 0 1 1 "*"
@@ -1401,46 +1401,57 @@ C L "protocol_cmd_parse_request" 5 2 1 "FUNCTION"
 F N "protocol_cmd_parse_request" 5 10 ""
 V L "??65535" 5 10 "int8" `736 
 f G "protocol_cmd_parse_request" 5 10 "int8(int8 )" `735 
-F N "set_address_hdlr" 5 11 ""
-f G "set_address_hdlr" 5 11 "void()" `737 
-F N "drv_enable_hdlr" 5 12 ""
-f G "drv_enable_hdlr" 5 12 "void()" `738  "PROTOCOL_H *"
-C L "drv_enable_hdlr" 6 2 3 "FUNCTION"
-C L "drv_enable_hdlr" 5 2 3 "FUNCTION"
-C L "drv_enable_hdlr" 3 1 1 "*"
-C L "drv_enable_hdlr" 3 1 1 "*"
-C L "drv_enable_hdlr" 3 1 2 "*"
-C L "drv_enable_hdlr" 6 11 1 "FUNCTION"
+F N "wake_up_hdlr" 5 11 ""
+f G "wake_up_hdlr" 5 11 "void()" `737 
+F N "get_firmware_version_hdlr" 5 12 ""
+f G "get_firmware_version_hdlr" 5 12 "void()" `738 
+F N "set_address_hdlr" 5 13 ""
+f G "set_address_hdlr" 5 13 "void()" `739 
+F N "set_drv_enable_hdlr" 5 14 ""
+f G "set_drv_enable_hdlr" 5 14 "void()" `740  "PROTOCOL_H *"
+C L "set_drv_enable_hdlr" 6 2 3 "FUNCTION"
+C L "set_drv_enable_hdlr" 5 2 3 "FUNCTION"
+C L "set_drv_enable_hdlr" 3 1 1 "*"
+C L "set_drv_enable_hdlr" 3 1 1 "*"
+C L "set_drv_enable_hdlr" 3 1 2 "*"
+C L "set_drv_enable_hdlr" 6 11 1 "FUNCTION"
 F N "*t_cmdHdlr" 6 12 ""
-T G "*t_cmdHdlr" 6 12 "void()" `739 
-E G "CMD_SET_ADDRESS" 6 17 "0" `742 
-E G "CMD_DRIVER_ENABLE" 6 18 "1" `743 
-T G "e_cmdID" 6 18 "" `744 
+T G "*t_cmdHdlr" 6 12 "void()" `741 
+E G "CMD_WAKE_UP" 6 17 "0" `744 
+E G "CMD_GET_FIRMWARE_VERSION" 6 18 "1" `745 
+E G "CMD_SET_ADDRESS" 6 19 "2" `746 
+E G "CMD_SET_DRV_ENABLE" 6 20 "3" `747 
+T G "e_cmdID" 6 20 "" `748 
 C L "*t_cmdHdlr" 6 11 1 "FUNCTION"
 C L "*t_cmdHdlr" 6 11 1 "FUNCTION"
-T G "t_cmd_info" 6 24 "{int1 cmd_id,t_cmdHdlr cmd_hdlr}" `748  "Variables"
-V G "cmd_callback" 6 27 "t_cmdHdlr" `749 
-V G "cmd_hdlrs" 6 29 "t_cmd_info[1]" `750 
+T G "t_cmd_info" 6 26 "{e_cmdID cmd_id,t_cmdHdlr cmd_hdlr}" `752  "Variables"
+V G "cmd_hdlrs" 6 29 "t_cmd_info[1]" `753 
 C L "*t_cmdHdlr" 6 11 1 "FUNCTION"
-F N "protocol_cmd_parse_request" 6 36 ""
-V L "msg_ID" 6 36 "int8" `752 
-F G "protocol_cmd_parse_request" 6 37 "int8(int8 msg_ID)" `735 
-V L "i" 6 38 "int8" `751 
+F N "protocol_cmd_parse_request" 6 38 ""
+V L "msg_ID" 6 38 "int8" `755 
+F G "protocol_cmd_parse_request" 6 39 "int8(int8 msg_ID)" `735 
+V L "i" 6 40 "int8" `754 
 C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
-V L "cmd_hdlrs_count" 6 40 "int8" `752 
-C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
-C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
+V L "cmd_hdlrs_count" 6 42 "int8" `755 
 C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
 C L "protocol_cmd_parse_request" 6 11 1 "FUNCTION"
-C L "set_address_hdlr" 6 54 1 "*"
-F N "set_address_hdlr" 6 57 ""
-F G "set_address_hdlr" 6 58 "void()" `737 
-C L "drv_enable_hdlr" 6 61 1 "*"
-F N "drv_enable_hdlr" 6 64 ""
-F G "drv_enable_hdlr" 6 65 "void()" `738 
+C L "protocol_cmd_parse_request" 6 11 2 "FUNCTION"
+C L "wake_up_hdlr" 6 55 1 "*"
+F N "wake_up_hdlr" 6 58 ""
+F G "wake_up_hdlr" 6 59 "void()" `737 
+C L "get_firmware_version_hdlr" 6 62 1 "*"
+F N "get_firmware_version_hdlr" 6 65 ""
+F G "get_firmware_version_hdlr" 6 66 "void()" `738 
+C L "set_address_hdlr" 6 69 1 "*"
+F N "set_address_hdlr" 6 72 ""
+F G "set_address_hdlr" 6 73 "void()" `739 
+C L "set_drv_enable_hdlr" 6 76 1 "*"
+F N "set_drv_enable_hdlr" 6 79 ""
+F G "set_drv_enable_hdlr" 6 80 "void()" `740 
 F N "MAIN" 0 15 ""
-F G "MAIN" 0 16 "void()" `755 
-C L "MAIN" 0 24 2 "FUNCTION"
+F G "MAIN" 0 16 "void()" `760 
+C L "MAIN" 0 20 1 "FUNCTION"
+C L "MAIN" 0 20 2 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1
