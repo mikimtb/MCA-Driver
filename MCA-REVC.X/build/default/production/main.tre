@@ -1,7 +1,9 @@
 ÀÄMCA-REVC
-   ÃÄMAIN  0/222  Ram=0
+   ÃÄMAIN  0/232  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄuart_init  0/64  Ram=4
+   ³  ÃÄ@PSTRINGC_688  0/32  Ram=2
+   ³  ³  ÀÄuart_bputc  0/56  Ram=5
    ³  ÃÄparse_uart_data  0/12  Ram=0
    ³  ³  ÃÄwait_for_start  0/52  Ram=1
    ³  ³  ³  ÀÄuart_bgetc  0/32  Ram=2
@@ -19,7 +21,7 @@
    ³  ³  ÃÄparse_end  0/58  Ram=1
    ³  ³  ³  ÃÄuart_bgetc  0/32  Ram=2
    ³  ³  ³  ÀÄ@PSTRINGC_688  0/32  Ram=2
-   ³  ³  ³     ÀÄuart_bputc  0/56  Ram=5
+   ³  ³  ³     ÀÄ*
    ³  ³  ÃÄwake_up_hdlr  0/12  Ram=0
    ³  ³  ³  ÀÄ@PSTRINGC_688  0/32  Ram=2
    ³  ³  ³     ÀÄ*

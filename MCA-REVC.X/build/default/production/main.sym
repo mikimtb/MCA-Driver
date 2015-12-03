@@ -74,18 +74,18 @@ FAC     TXSTA
 FAC.2   BRGH
 FAC.4   SYNC
 FAF-FB0 SPBRG
-FBB     CCP_2
 FBB     CCP_2_LOW
+FBB     CCP_2
 FBC     CCP_2_HIGH
 FBE     CCP_1_LOW
 FBE     CCP_1
 FBF     CCP_1_HIGH
-FE1-FE2 @WRITE_PACKED_MEMORY.P1
-FE1-FE2 @READ_PACKED_MEMORY.P2
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
 FE9-FEA @READ_PROGRAM_MEMORY.P1
-FE9-FEA @READ_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PROGRAM_MEMORY.P3
-FE9-FEA @WRITE_PACKED_MEMORY.P4
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
 FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
@@ -100,45 +100,46 @@ ROM Allocation:
 000196  @const757.call
 0001BA  @const758.call
 0001D4  @const759.call
-0001EE  uart_init
-00022E  uart_bgetc
-00024E  wait_for_start
-000282  wait_for_adr
-0002A6  parse_id
-0002CA  parse_length
-0002EE  parse_data
-000338  crc_check
-000374  parse_crc
-0003AC  uart_bputc
-0003E4  @PSTRINGC_688
-000404  parse_end
-00043E  wake_up_hdlr
-00044A  get_firmware_version_hdlr
-000456  set_address_hdlr
-000462  set_drv_enable_hdlr
-00046E  parse_uart_data
-00047A  protocol_cmd_parse_request
-0004EC  @delay_ms1
-000516  @cinit1
-000516  MAIN
-000550  @cinit2
+0001EE  @const763.call
+0001FC  uart_init
+00023C  uart_bputc
+000274  @PSTRINGC_688
+000294  uart_bgetc
+0002B4  wait_for_start
+0002E8  wait_for_adr
+00030C  parse_id
+000330  parse_length
+000354  parse_data
+00039E  crc_check
+0003DA  parse_crc
+000412  parse_end
+00044C  wake_up_hdlr
+000458  get_firmware_version_hdlr
+000464  set_address_hdlr
+000470  set_drv_enable_hdlr
+00047C  parse_uart_data
+000488  protocol_cmd_parse_request
+0004FA  @delay_ms1
+000524  @cinit1
+000524  MAIN
+00055E  @cinit2
 
 Project Directory:
     F:\Dropbox (Personal)\Doktorat\GitRepository\MCA Driver\MCA-REVC.X\
 
 Project Files:
-    main.c                                                  [03-Dec-15 00:30  CRC=3727A899]
-    main.h                                                  [19-Nov-15 23:26  CRC=004C7DDD]
+    main.c                                                  [03-Dec-15 01:10  CRC=E009F5DC]
+    main.h                                                  [03-Dec-15 01:09  CRC=3CD7729A]
     C:\Program Files\PICC\devices\18F4431.h                 [17-Apr-15 14:50  CRC=717083EF]
     uart.h                                                  [23-Nov-15 00:43  CRC=8893D26F]
     uart.c                                                  [25-Nov-15 01:34  CRC=E4FF88B8]
     protocol.h                                              [03-Dec-15 00:30  CRC=2CAA79EC]
     protocol.c                                              [03-Dec-15 00:31  CRC=FC2B5899]
 
-Source signature=3B7930AA
+Source signature=20E672AA
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=E0BE
+Hex file CRC=FDB8
 
 Units:
     main (main)

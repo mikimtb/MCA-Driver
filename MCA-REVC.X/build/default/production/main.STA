@@ -1,9 +1,9 @@
 
-ROM used:   1520/16384 (9%)
-            1520/16384 (9%) including unused fragments
+ROM used:   1544/16384 (9%)
+            1544/16384 (9%) including unused fragments
 
             1.1 Average locations per line
-            12.9 Average locations per statement
+            13.0 Average locations per statement
 
 RAM used:   211/768 (27%) at main() level
             226/768 (29%) worst case
@@ -13,15 +13,15 @@ Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   39    11   9  main.c
-   58     0   0  main.h
+   39    12  10  main.c
+   60     0   0  main.h
   894     0   0  C:\Program Files\PICC\devices\18F4431.h
    30     0   0  uart.h
   321    97  82  uart.c
    18     0   0  protocol.h
    83    10   8  protocol.c
 ----- -----
- 1443   118 Total
+ 1445   119 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -54,27 +54,28 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     26   1    0             @const758
 0     12   0    0     25  1.2  set_drv_enable_hdlr
 0     26   1    0             @const759
-0    222   7    0    231  4.1  MAIN
+0    232   8    0    270  4.0  MAIN
+0     14   0    0             @const763
  Inline         0             @cinit1
 
 Program metrics:
     Functions               21
-    Statements              118
-    Comments                381
-    Volume (V)              7363
-    Difficulty (D)          84.9
-    Effort to implement (E) 625130
-    Time to implement (T)   9 hours, 39 minutes
+    Statements              119
+    Comments                380
+    Volume (V)              7428
+    Difficulty (D)          84.6
+    Effort to implement (E) 628063
+    Time to implement (T)   9 hours, 42 minutes
     Est Delivered Bugs (B)  2
     Cyclomatic Complexity   20
-    Maintainability (MI)    128
+    Maintainability (MI)    127
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000C4   190  0  
-000C6-03FFE  1326  14860  
+000C6-03FFE  1350  14836  
 
 
 

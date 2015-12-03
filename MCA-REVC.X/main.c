@@ -17,7 +17,7 @@ void main()
     uart_init(2, 120); 
     enable_interrupts(GLOBAL);
     
-    //printf(uart_bputc, "\r\n\Running...\r\n");
+    printf(uart_bputc, firmware);
     
     while (1)
     {

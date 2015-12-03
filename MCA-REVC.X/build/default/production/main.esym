@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.045""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""03-Dec-15""
-D G "__TIME__" 0 0 ""00:31:32""
+D G "__TIME__" 0 0 ""01:10:07""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4431" 0 0 "1" "* File:   main.c"
 C G "" 0 1 1 "*"
@@ -1251,11 +1251,12 @@ d G "INT_IC3DR" 2 888 "0x00A308"
 d G "INT_IC2QEI" 2 889 "0x00A304"
 d G "INT_IC1" 2 890 "0x00A302"
 d G "INT_TIMER5" 2 891 "0x00A301"
-D G "RX_PIN" 1 32 "PIN_C7"
-D G "TX_PIN" 1 33 "PIN_C6"
-D G "RS485_RW" 1 34 "PIN_C0"
-C L "jump_to_isr" 1 39 1 "FUNCTION"
-V G "SPBRG" 1 51 "int16" `683 
+D G "firmware" 1 32 ""MCA1-V3-v1.0""
+D G "RX_PIN" 1 34 "PIN_C7"
+D G "TX_PIN" 1 35 "PIN_C6"
+D G "RS485_RW" 1 36 "PIN_C0"
+C L "jump_to_isr" 1 41 1 "FUNCTION"
+V G "SPBRG" 1 53 "int16" `683 
 C L "jump_to_isr" 3 1 1 "*"
 C L "jump_to_isr" 3 1 1 "*"
 D G "UART_H" 3 9 ""
@@ -1450,8 +1451,7 @@ F N "set_drv_enable_hdlr" 6 79 ""
 F G "set_drv_enable_hdlr" 6 80 "void()" `740 
 F N "MAIN" 0 15 ""
 F G "MAIN" 0 16 "void()" `760 
-C L "MAIN" 0 20 1 "FUNCTION"
-C L "MAIN" 0 20 2 "FUNCTION"
+C L "MAIN" 0 24 2 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

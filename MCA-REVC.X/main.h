@@ -29,6 +29,8 @@
 #fuses      NOLVP
 #fuses      NODEBUG
 
+#define firmware "MCA1-V3-v1.0"
+
 #define     RX_PIN      PIN_C7
 #define     TX_PIN      PIN_C6
 #define     RS485_RW    PIN_C0
