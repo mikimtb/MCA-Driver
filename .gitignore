@@ -1,0 +1,6 @@
+*.hex
+MCA-REVC.X/dist/
+*.ccspjt
+MCA-REVC.X/nbproject/
+MCA-REVC.X/build/
+MCA-REVC.X/Makefile
