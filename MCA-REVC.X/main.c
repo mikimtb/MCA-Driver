@@ -10,6 +10,8 @@
 #include "uart.c"
 #include "protocol.h"
 #include "protocol.c"
+#include "input.h"
+#include "input.c"
 
 
 void main()
@@ -31,8 +33,7 @@ void main()
             NEW_MESSAGE_RECEIVE = FALSE;
         }
         
-        
-        delay_ms(10);
+        delay_ms(500);
     }
 }
 
