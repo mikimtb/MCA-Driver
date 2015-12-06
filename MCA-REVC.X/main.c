@@ -12,11 +12,14 @@
 #include "protocol.c"
 #include "input.h"
 #include "input.c"
+#include "pwm.h"
+#include "pwm.c"
 
 
 void main()
 {
     uart_init(2, 120); 
+    pwm_init(12, 10, 10);
     enable_interrupts(GLOBAL);
     
     printf(uart_bputc, firmware);
