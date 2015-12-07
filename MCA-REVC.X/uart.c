@@ -21,10 +21,11 @@
 #include "uart.h"
 
 //Defines
-#define UART_RX_TIMEOUT     1                   // Timeout in mS
-#define TIMER1_REFRESH      (long)(65536 - (UART_RX_TIMEOUT * 10000))
-#define UART_BUFFER_SIZE    64
-#define DATA_BUFFER_SIZE    32    
+#define UART_TX_TIMEOUT_ENABLE  1
+#define UART_RX_TIMEOUT         1                   // Timeout in mS
+#define TIMER1_REFRESH          (long)(65536 - (UART_RX_TIMEOUT * 10000))
+#define UART_BUFFER_SIZE        64
+#define DATA_BUFFER_SIZE        32    
 #define uart_bkbhit (in.next_in!=in.next_out)
 
 // Type definitions
@@ -87,6 +88,7 @@ void serial_td_isr()
 /**
  * TIMER1 overflow interrupt handler
  */
+#ifdef UART_RX_TIMEOUT_ENABLE
 #int_timer1
 void timer1_overflow_isr()
 {
@@ -96,6 +98,7 @@ void timer1_overflow_isr()
     /* Request for retransmission should be added here if it's needed */
     /* printf(uart_bputc, "Timeout occurred!\r\n");                  */
 }
+#endif
 /**
  * uart_bgetc, Function return one byte from uart input buffer
  * @return , first buffer that is written to the uart input buffer.
@@ -163,8 +166,9 @@ void uart_init(unsigned int baudrate, BYTE dev_id)
     
     // Timer 1 is used as timeout generator
     // The time is defined using UART_RX_TIMEOUT
+    #ifdef UART_RX_TIMEOUT_ENABLE
     setup_timer_1(T1_INTERNAL | T1_DIV_BY_8);
-    
+    #endif    
     enable_interrupts(INT_RDA);
 }
 /**
@@ -194,9 +198,11 @@ void wait_for_start()
         count = 0;
         parse_next = wait_for_adr; // Next we parse the [ID] field
         
+        #ifdef UART_RX_TIMEOUT_ENABLE       
         set_timer1(TIMER1_REFRESH);
         clear_interrupt(int_timer1);
         enable_interrupts(int_timer1);
+        #endif
     }
 }
 /**
@@ -209,7 +215,9 @@ void wait_for_adr()
         return;
     
     data.dev_address = uart_bgetc();
+    #ifdef UART_RX_TIMEOUT_ENABLE
     set_timer1(TIMER1_REFRESH);
+    #endif
     parse_next = parse_id;
     
 }
@@ -223,7 +231,9 @@ void parse_id()
         return;
     
     data.ID = uart_bgetc();
+    #ifdef UART_RX_TIMEOUT_ENABLE
     set_timer1(TIMER1_REFRESH);
+    #endif
     parse_next = parse_length;
 }
 /**
@@ -236,8 +246,13 @@ void parse_length()
         return;
     
     data.data_length = uart_bgetc();
+    #ifdef UART_RX_TIMEOUT_ENABLE
     set_timer1(TIMER1_REFRESH);
-    parse_next = parse_data;
+    #endif
+    if (data.data_length == 0)              // If data length is set to 0 there
+        parse_next = parse_crc;             // is no need to parse data, go to CRC
+    else
+        parse_next = parse_data;            // else data should be parsed
 }
 /**
  * Function receive data part of a package
@@ -251,7 +266,9 @@ void parse_data()
        The bytes arrive in Big Endian order. */
     data.data_buffer[count] = uart_bgetc();
     count++;
+    #ifdef UART_RX_TIMEOUT_ENABLE
     set_timer1(TIMER1_REFRESH);
+    #endif
     /* State transition rule */
     if (count == data.data_length)
     {
@@ -269,7 +286,9 @@ void parse_crc()
         return;
     
     data.crc = uart_bgetc();
+    #ifdef UART_RX_TIMEOUT_ENABLE
     set_timer1(TIMER1_REFRESH);
+    #endif
     // Check CRC
     if (!crc_check())
     {
@@ -288,8 +307,9 @@ void parse_end()
     //* If there is no data available, return */
     if (!uart_bkbhit)
         return;
-    
+    #ifdef UART_RX_TIMEOUT_ENABLE
     disable_interrupts(int_timer1);
+    #endif
     // If last byte isn't stop character, something goes wrong in transmission
     // and package will be rejected
     if (uart_bgetc() != '$')
