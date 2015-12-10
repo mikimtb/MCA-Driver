@@ -10,11 +10,18 @@
 #include "uart.c"
 #include "protocol.h"
 #include "protocol.c"
+#include "input.h"
+#include "input.c"
+#include "pwm.h"
+#include "pwm.c"
 
 
 void main()
 {
     uart_init(2, 120); 
+    pwm_init(13, 10, 12);
+    //pwm_brake_release();
+    //pwm_init_ccp1(256);
     enable_interrupts(GLOBAL);
     
     printf(uart_bputc, firmware);
@@ -31,8 +38,6 @@ void main()
             NEW_MESSAGE_RECEIVE = FALSE;
         }
         
-        
-        delay_ms(10);
     }
 }
 
